@@ -52,8 +52,8 @@ class FormControl:
     }
 
     SITE_PROP_MAP = {
-        0:  ("Name", "<I", DataLocation.DATA_BLOCK),
-        1:  ("TagData", "<I", DataLocation.DATA_BLOCK),
+        0:  ("Name", "<I", DataLocation.BOTH),
+        1:  ("TagData", "<I", DataLocation.BOTH),
         2:  ("ID", "<I", DataLocation.DATA_BLOCK),
         3:  ("HelpContextId", "<I", DataLocation.DATA_BLOCK),
         4:  ("BitFlags", "<I", DataLocation.DATA_BLOCK),
