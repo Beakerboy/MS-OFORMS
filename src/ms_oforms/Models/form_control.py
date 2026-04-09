@@ -131,15 +131,18 @@ class FormControl:
         site_records = b''
         for site in self.sites:
             site_data = b''
+            site_extra = b''
             for bit, map_data in self.SITE_PROP_MAP.items():
                 name = map_data[0]
                 if name in site[1]:
                     if map_data[2] == DataLocation.BOTH:
+                        if len(site_data) % 4 != 0:
+                            site_data += b'\x00\x00'
                         value = len(site[1][name]) * 2 + 1
-                        site_data += steuct.pack("<I", value)
+                        site_data += struct.pack("<I", value)
+                        site_extra += site[1][name]
                     elif map_data[2] == DataLocation.DATA_BLOCK:
                         site_data += site[1][name]
-            site_extra = site[2]
             site_records += (
                 struct.pack('<HHH', 0, 4 + len(site_data) + len(site_extra), site[0]) +
                 site_data + site_extra
