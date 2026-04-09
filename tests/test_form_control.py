@@ -2,7 +2,15 @@ from ms_cfb.ole_file import OleFile
 from ms_oforms.Models.form_control import FormControl
 
 
-def test_to_bytes() -> None:
+def test_generate_flags() -> None;
+    form = FormControl()
+    form.properties["NextID"] = 5
+    form.properties["LogicalSize"] = 5
+    expected = 0x0c000c08
+    assert form.generate_prop_mask() == expected
+
+
+def tests_to_bytes() -> None:
     path1 = 'tests/files/Login.frx'
     path2 = 'tests/files/Login.bin'
     path3 = 'tests/files/f.bin'
