@@ -121,7 +121,7 @@ class FormControl:
         depth = self.depth
         pad_size = min(4 - len(depth) % 4, 3)
         padded_depth = depth + b'\x00' * pad_size
-        count_of_bytes = len(padded_depth) + site_data
+        count_of_bytes = len(padded_depth) + len(site_data)
         for item in self.class_table:
             output += item
         output += struct.pack('<II', len(self.sites), count_of_bytes)
