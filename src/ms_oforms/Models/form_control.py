@@ -123,7 +123,7 @@ class FormControl:
             )
         depth = self.depth
         pad_size = min(4 - len(depth) % 4, 3)
-        padded_depth = depth + b'\x00' * pad_size
+        padded_depth = depth + b't' * pad_size
         count_of_bytes = len(padded_depth) + len(site_data)
         for item in self.class_table:
             output += item
