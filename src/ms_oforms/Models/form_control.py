@@ -51,6 +51,18 @@ class FormControl:
         27: ("DrawBuffer", "", DataLocation.DATA_BLOCK)
     }
 
+    SITE_PROP_MAP = {
+        0:  ("Name", "<I", DataLocation.DATA_BLOCK),
+        1:  ("TagData", "<I", DataLocation.DATA_BLOCK),
+        2:  ("ID", "<I", DataLocation.DATA_BLOCK),
+        3:  ("HelpContextId", "<I", DataLocation.DATA_BLOCK),
+        4:  ("BitFlags", "<I", DataLocation.DATA_BLOCK),
+        5:  ("ObjectStreamSize", "<I", DataLocation.DATA_BLOCK),
+        6:  ("TabIndex", "<H", DataLocation.DATA_BLOCK),
+        7:  ("ClsidCacheIndex", "<H", DataLocation.DATA_BLOCK),
+        8:  ("GroupId", "<H", DataLocation.DATA_BLOCK)
+    }
+
     def __init__(self: T) -> None:
         self._min_ver = 0
         self._maj_ver = 4
@@ -115,20 +127,26 @@ class FormControl:
 
     def generate_site_data(self: T) -> bytes:
         output = struct.pack('<H', len(self.class_table))
-        site_data = b''
+        site_records = b''
         for site in self.sites:
-            site_data += (
-                struct.pack('<HHH', 0, 4 + len(site[1]) + len(site[2]), site[0]) +
-                site[1] + site[2]
+            site_data = b''
+            for map_data in self.SITE_PROP_MAP:
+                name = map_data[0]
+                if name in site[1]:
+                    site_data += site[1][name]
+            site_extra = site[2]
+            site_records +== (
+                struct.pack('<HHH', 0, 4 + len(site_data) + len(site_extra), site[0]) +
+                site_data + site_extra
             )
         depth = self.depth
         pad_size = min(4 - len(depth) % 4, 3)
         padded_depth = depth + b't' * pad_size
-        count_of_bytes = len(padded_depth) + len(site_data)
+        count_of_bytes = len(padded_depth) + len(site_records)
         for item in self.class_table:
             output += item
         output += struct.pack('<II', len(self.sites), count_of_bytes)
-        output += padded_depth + site_data
+        output += padded_depth + site_records
         return output
 
     def generate_prop_mask(self: T) -> int:
