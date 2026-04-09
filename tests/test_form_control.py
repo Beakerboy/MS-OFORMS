@@ -54,7 +54,7 @@ def test_to_bytes() -> None:
     form.properties["Display"] = 0x0d3b00000fd0
     form.properties["LogicalSize"] = 0
     form.properties["ShapeCookie"] = 8
-    form.properties["DrawBuffer"] = 0x7d0
+    form.properties["DrawBuffer"] = 0x7d00
     site1_mask = b'\xf5\x01\x00\x00'
     site1_data = {
         "Name": b'Label1',
