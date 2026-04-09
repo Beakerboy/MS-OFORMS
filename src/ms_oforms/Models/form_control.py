@@ -118,8 +118,8 @@ class FormControl:
         site_data = b''
         for site in self.sites:
             site_data += (
-                struct.pack('<HH', 0, 4 + len(site[1]) + len(site[2])) +
-                site[0] + site[1] + site[2]
+                struct.pack('<HHH', 0, 4 + len(site[1]) + len(site[2]), site[0]) +
+                site[1] + site[2]
             )
         depth = self.depth
         pad_size = min(4 - len(depth) % 4, 3)
