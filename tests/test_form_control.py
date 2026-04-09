@@ -18,4 +18,3 @@ def test_to_bytes() -> None:
         expected = file.read
     form = FormControl()
     assert form.to_bytes() == expected
-        
