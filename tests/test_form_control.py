@@ -62,7 +62,7 @@ def test_to_bytes() -> None:
         "ObjectStreamSize": b'\x00\x00<\x00',
         "TabIndex": b'\x00\x00',
         "ClsidCacheIndex": b'\x00\x00',
-        "GroupId": b'\x00\x00'
+        "GroupId": b'\x15\x00'
     }
     site1_extra = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
     form.sites = [
