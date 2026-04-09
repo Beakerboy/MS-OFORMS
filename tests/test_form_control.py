@@ -64,7 +64,7 @@ def test_to_bytes() -> None:
         "ClsidCacheIndex": b'\x00\x00',
         "GroupId": b'\x15\x00'
     }
-    site1_extra = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+    site1_extra = b'Label1\x00\x00\x00\x00\x00\x00\x00\x00'
     form.sites = [
         (0x01f5, site1_data, site1_extra), (0, site1_data, b''), (0, site1_data, b''),
         (0, site1_data, b''), (0, site1_data, b'')
