@@ -7,6 +7,8 @@ def test_generate_flags() -> None;
     form.properties["NextID"] = 5
     form.properties["Display"] = 5
     form.properties["LogicalSize"] = 5
+    form.properties["ShapeCookie"] = 5
+    form.properties["DrawBuffer"] = 5
     expected = 0x0c000c08
     assert form.generate_prop_mask() == expected
 
