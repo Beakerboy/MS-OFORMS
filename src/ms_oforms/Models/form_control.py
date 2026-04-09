@@ -117,7 +117,7 @@ class FormControl:
         output = struct.pack('<H', len(self.class_table))
         for item in self.class_table:
             output += item
-        output += struct.pack('<H', len(self.sites))
+        output += struct.pack('<I', len(self.sites))
         return output
 
     def generate_prop_mask(self: T) -> int:
