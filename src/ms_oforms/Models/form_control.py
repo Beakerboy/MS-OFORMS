@@ -118,9 +118,9 @@ class FormControl:
         site_data = b''
         for site in self.sites:
             site_data += site
-        depths = self.depths
+        depth = self.depth
         pad_size = min(4 - len(depths) % 4, 3)
-        padded_depth = depths + '\x00' * pad_size
+        padded_depth = depth + '\x00' * pad_size
         count_of_bytes = len(padded_depth) + site_data
         for item in self.class_table:
             output += item
