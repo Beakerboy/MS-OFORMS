@@ -44,8 +44,8 @@ class FormControl:
         22: ("Zoom",    "B",   DataLocation.DATA_BLOCK),
         23: ("PictureAligmment",  "", DataLocation.DATA_BLOCK),
         24: ("PictureTiling", "", DataLocation.DATA_BLOCK),
-        25: ("PictureSizeMode", "", DataLocation.DATA_BLOCK)
-        26: ("ShapeCookie", "", DataLocation.DATA_BLOCK)
+        25: ("PictureSizeMode", "", DataLocation.DATA_BLOCK),
+        26: ("ShapeCookie", "", DataLocation.DATA_BLOCK),
         27: ("DrawBuffer", "", DataLocation.DATA_BLOCK)
     }
 
