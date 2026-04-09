@@ -100,7 +100,7 @@ def test_to_bytes() -> None:
         "ObjectStreamSize": 0x38,
         "TabIndex": 4,
         "ClsidCacheIndex": 0x11,
-        "Position": b'\x00\x00\x00\x00\xec\x09\x00\x00'
+        "Position": b'\x1f\x00\x00\x00\x00\xec\x09\x00'
     }
     form.sites = [
         (site1_mask, site1_data), (site2_mask, site2_data), (site3_mask, site3_data),
