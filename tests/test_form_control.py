@@ -65,8 +65,8 @@ def test_to_bytes() -> None:
         "GroupId": b'\x00\x00'
     }
     form.sites = [
-        (0x01f5, site1_data, b''), (0, b'', b''), (0, b'', b''),
-        (0, b'', b''), (0, b'', b'')
+        (0x01f5, site1_data, b''), (0, site1_data, b''), (0, site1_data, b''),
+        (0, site1_data, b''), (0, site1_data, b'')
     ]
     form.depth = b'\x00\x85\x01'  # 5 consecutive ssites with type 1 depth 0
     assert form.to_bytes() == expected
