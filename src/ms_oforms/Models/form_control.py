@@ -56,7 +56,7 @@ class FormControl:
         1:  ("TagData", "<I", DataLocation.BOTH),
         2:  ("ID", "<I", DataLocation.DATA_BLOCK),
         3:  ("HelpContextId", "<I", DataLocation.DATA_BLOCK),
-        4:  ("BitFlags", "<I", DataLocation.DATA_BLOCK),
+        4:  ("BitFlags", "s", DataLocation.DATA_BLOCK),
         5:  ("ObjectStreamSize", "<I", DataLocation.DATA_BLOCK),
         6:  ("TabIndex", "<H", DataLocation.DATA_BLOCK),
         7:  ("ClsidCacheIndex", "<H", DataLocation.DATA_BLOCK),
@@ -143,7 +143,10 @@ class FormControl:
                         site_data += struct.pack("<I", value)
                         site_extra += site[1][name]
                     elif map_data[2] == DataLocation.DATA_BLOCK:
-                        site_data += site[1][name]
+                        if map_data[1] == "s":
+                            site_data += site[1][name]
+                        else:
+                            site_data += struct.pack(map_data[1], site[1][name])
                     elif map_data[2] == DataLocation.EXTRA_BLOCK:
                         site_extra += site[1][name]
             site_records += (
