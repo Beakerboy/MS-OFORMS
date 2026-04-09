@@ -56,12 +56,12 @@ def test_to_bytes() -> None:
     form.properties["ShapeCookie"] = 8
     form.properties["DrawBuffer"] = 0x7d00
     site1_data = {
-        "Name": b'\x00\x00\x06\x00'
-        "ID": b'\x00\x80\x01\x00'
-        "BitFlags": b'\x00\x00\x04\x00'
-        "ObjectStreamSize": b'\x00\x00\x00\x00'
-        "TabIndex": b'\x00\x00'
-        "ClsidCacheIndex": b'\x00\x00'
+        "Name": b'\x00\x00\x06\x00',
+        "ID": b'\x00\x80\x01\x00',
+        "BitFlags": b'\x00\x00\x04\x00',
+        "ObjectStreamSize": b'\x00\x00\x00\x00',
+        "TabIndex": b'\x00\x00',
+        "ClsidCacheIndex": b'\x00\x00',
         "GroupId": b'\x00\x00'
     }
     site1_extra = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
