@@ -72,7 +72,6 @@ def test_to_bytes() -> None:
         "TabIndex": 1,
         "ClsidCacheIndex": 0x17,
         "Position": b'\x00\x00\x00\x00\xa7\x01\x00\x00'
-        
     }
     site2_mask = b'\xe5\x01\x00\x00'
     site3_mask = b'\xf5\x01\x00\x00'
@@ -83,7 +82,7 @@ def test_to_bytes() -> None:
         "ObjectStream": 0x38,
         "TabIndex": 2,
         "ClsidCacheIndex": 0x15,
-        "Position": b'\x00\x00\x00\x00\x00\x00\x00\x00'
+        "Position": b'\x00\x00\x00\x00\x00\x00\xf6\x04'
     }
     form.sites = [
         (site1_mask, site1_data), (site2_mask, site2_data), (site3_mask, site3_data),
