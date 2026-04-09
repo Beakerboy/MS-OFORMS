@@ -1,6 +1,7 @@
 from ms_cfb.ole_file import OleFile
 from ms_oforms.Models.form_control import FormControl
 
+
 def test_to_bytes() -> None:
     path1 = 'tests/files/Login.frx'
     path2 = 'tests/files/Login.bin'
@@ -12,7 +13,7 @@ def test_to_bytes() -> None:
         file.write(ole_data)
     with open(path2, 'rb') as file:
         olefile = OleFile.create_from_file(path2)
-        olefile.extract_stream('f', tests/files)
+        olefile.extract_stream('f', 'tests/files')
     with open(path3, 'rb') as file:
         expected = file.read
         
