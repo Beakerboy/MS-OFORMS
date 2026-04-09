@@ -130,7 +130,7 @@ class FormControl:
         site_records = b''
         for site in self.sites:
             site_data = b''
-            for map_data in self.SITE_PROP_MAP:
+            for bit, map_data in self.SITE_PROP_MAP.items():
                 name = map_data[0]
                 if name in site[1]:
                     site_data += site[1][name]
