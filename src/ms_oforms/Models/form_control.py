@@ -115,7 +115,7 @@ class FormControl:
     def generate_site_data(self: T) -> bytes:
         output = struct.pack('<H', len(self.class_table))
         output += self.class_table[0]
-        output += struct.pack('<H' len(self.sites))
+        output += struct.pack('<H', len(self.sites))
         return output
 
     def generate_prop_mask(self: T) -> int:
