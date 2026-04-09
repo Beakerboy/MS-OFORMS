@@ -1,3 +1,9 @@
+from typing import TypeVar
+
+
+T = TypeVar('T', bound='OleSite')
+
+
 class OleSite:
 
     SITE_PROP_MAP = {
@@ -13,3 +19,6 @@ class OleSite:
         9:  ("GroupId", "<H", DataLocation.DATA_BLOCK),
         11: ("ControlTipText", "<I", DataLocation.BOTH)
     }
+
+    def to_bytes(self: T) -> bytes:
+        return b''
