@@ -135,7 +135,7 @@ class FormControl:
                 if name in site[1]:
                     site_data += site[1][name]
             site_extra = site[2]
-            site_records +== (
+            site_records += (
                 struct.pack('<HHH', 0, 4 + len(site_data) + len(site_extra), site[0]) +
                 site_data + site_extra
             )
