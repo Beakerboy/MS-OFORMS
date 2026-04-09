@@ -117,7 +117,7 @@ class FormControl:
         output = struct.pack('<H', len(self.class_table))
         site_data = b''
         for site in self.sites:
-            site_data += site
+            site_data += b'\x00\x00SI'
         depth = self.depth
         pad_size = min(4 - len(depth) % 4, 3)
         padded_depth = depth + b'\x00' * pad_size
