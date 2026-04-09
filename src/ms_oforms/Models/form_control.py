@@ -56,7 +56,7 @@ class FormControl:
         self.properties = {}
 
     def to_bytes(self: T) -> bytes:
-        cb_form = 4 + len(data) + len(extra)
+        cb_form = 4 + len(self.data) + len(self.extra)
         output = (
             struct.pack(
                 '<BBHI', self._min_ver, self._maj_ver, cb_form,
