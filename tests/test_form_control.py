@@ -57,13 +57,14 @@ def test_to_bytes() -> None:
     form.properties["DrawBuffer"] = 0x7d0
     site1_mask = b'\xf5\x01\x00\x00'
     site1_data = {
-        "Name": b'Label',
-        "TagData": b'\x00',
-        "ID": b'2\x00\x00\x00\x00',
-        "HelpContextId": b'<\x00\x00\x00',
-        "BitFlags": b'\x00\x00\x00\x00',
+        "Name": b'Label1',
+        "ID": 1,
+        "BitFlags": b'2\x00\x00\x00\x00',
+        "ObjectStream": b'<\x00\x00\x00',
         "TabIndex": b'\x00\x00',
-        "ControlTipText": b"Label1"
+        "ControlTipText": b"\x15\x00",
+        "Position": b'\x00\x00\x00\x00\x00\x00\x00\x00'
+        
     }
     site1_extra = b'Label1\x00\x00\x00\x00\x00\x00\x00\x00'
     form.sites = [
