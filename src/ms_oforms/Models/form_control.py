@@ -67,6 +67,16 @@ class FormControl:
         )
         return output
 
+    def generate_data_block(self: T) -> bytes:
+        output = b''
+        for bit, map_data in self.FORM_PROP_MAP.items():
+            if (
+                    map_data[2] == DataLocation.DATA_BLOCK and
+                    map_data[0] in self.properties
+            ):
+                output += struct.pack('<I', self.properties[map_data[0]])
+        return output
+            
     def generate_prop_mask(self: T) -> int:
         """
         Recreates a 4-byte PropMask bitfield based on a dictionary of properties.
