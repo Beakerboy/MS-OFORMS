@@ -35,7 +35,7 @@ def test_generate_extra() -> None:
     assert form.generate_extra_data_block() == expected
 
 
-def to_bytes() -> None:
+def test_to_bytes() -> None:
     path1 = 'tests/files/Login.frx'
     path2 = 'tests/files/Login.bin'
     path3 = 'tests/files/f.bin'
