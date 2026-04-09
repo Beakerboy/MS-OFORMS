@@ -60,7 +60,8 @@ class FormControl:
         5:  ("ObjectStreamSize", "<I", DataLocation.DATA_BLOCK),
         6:  ("TabIndex", "<H", DataLocation.DATA_BLOCK),
         7:  ("ClsidCacheIndex", "<H", DataLocation.DATA_BLOCK),
-        8:  ("GroupId", "<H", DataLocation.DATA_BLOCK),
+        8:  ("Position", "<H", DataLocation.EXTRA_BLOCK),
+        9:  ("GroupId", "<H", DataLocation.DATA_BLOCK),
         11: ("ControlTipText", "<I", DataLocation.BOTH)
     }
 
@@ -138,11 +139,13 @@ class FormControl:
                     if map_data[2] == DataLocation.BOTH:
                         if len(site_data) % 4 != 0:
                             site_data += b'\x00\x00'
-                        value = len(site[1][name]) * 2 + 1
+                        value = len(site[1][name]) | 0x80000000
                         site_data += struct.pack("<I", value)
                         site_extra += site[1][name]
                     elif map_data[2] == DataLocation.DATA_BLOCK:
                         site_data += site[1][name]
+                    elif map_data[2] == DataLocation.EXTRA_BLOCK:
+                        site_extra += site[1][name]
             site_records += (
                 struct.pack('<HHH', 0, 4 + len(site_data) + len(site_extra), site[0]) +
                 site_data + site_extra
