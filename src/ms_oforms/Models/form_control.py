@@ -149,6 +149,8 @@ class FormControl:
                             site_data += struct.pack(map_data[1], site[1][name])
                     elif map_data[2] == DataLocation.EXTRA_BLOCK:
                         site_extra += site[1][name]
+            if len(site_extra) % 4 != 0:
+                site_data += b'\x00' * min(3, 4 - len(site_extra) % 4)
             site_records += (
                 struct.pack('<HH', 0, 4 + len(site_data) + len(site_extra)) +
                 site[0] + site_data + site_extra
