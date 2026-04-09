@@ -64,11 +64,19 @@ def test_to_bytes() -> None:
         "TabIndex": 0,
         "ClsidCacheIndex": 0x15,
         "Position": b'\x00\x00\x00\x00\x00\x00\x00\x00'
+    }
+    site2_data = {
+        "Name": b'Username',
+        "ID": 1,
+        "ObjectStream": 0x3c,
+        "TabIndex": 1,
+        "ClsidCacheIndex": 0x15,
+        "Position": b'\x00\x00\x00\x00\x00\x00\x00\x00'
         
     }
-    site1_extra = b'Label1\x00\x00\x00\x00\x00\x00\x00\x00'
+    site2_mask = b'\xe5\x01\x00\x00'
     form.sites = [
-        (site1_mask, site1_data, site1_extra), (site1_mask, site1_data, b''), (site1_mask, site1_data, b''),
+        (site1_mask, site1_data), (site2_mask, site2_data, b''), (site1_mask, site1_data, b''),
         (site1_mask, site1_data, b''), (site1_mask, site1_data, b'')
     ]
     form.depth = b'\x00\x85\x01'  # 5 consecutive ssites with type 1 depth 0
