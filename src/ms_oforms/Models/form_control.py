@@ -18,17 +18,18 @@ class FormControl:
     2.2.10.1 FormControl
     """
 
+    # All DATA_BLOCK data is for bytes.
     FORM_PROP_MAP = {
-        0:  ("Unused1",   "",   DataLocation.NONE),
-        1:  ("BackColor", "<I", DataLocation.DATA_BLOCK),
-        2:  ("ForeColor", "<I", DataLocation.DATA_BLOCK),
-        3:  ("NextID",    "<I", DataLocation.DATA_BLOCK),
-        4:  ("Unused2",   "",   DataLocation.NONE),
-        5:  ("Unused3",   "",   DataLocation.NONE),
-        6:  ("Boolean",     "<i", DataLocation.DATA_BLOCK),
-        7:  ("Border",   "<I", DataLocation.DATA_BLOCK),
-        8:  ("MousePointer",      "<I", DataLocation.DATA_BLOCK),
-        9:  ("ScrollBars",    "<I", DataLocation.DATA_BLOCK),
+        0:  ("Unused1",      "",   DataLocation.NONE),
+        1:  ("BackColor",    "", DataLocation.DATA_BLOCK),
+        2:  ("ForeColor",    "", DataLocation.DATA_BLOCK),
+        3:  ("NextID",       "", DataLocation.DATA_BLOCK),
+        4:  ("Unused2",      "",  DataLocation.NONE),
+        5:  ("Unused3",      "",   DataLocation.NONE),
+        6:  ("Boolean",      "", DataLocation.DATA_BLOCK),
+        7:  ("Border",       "", DataLocation.DATA_BLOCK),
+        8:  ("MousePointer", "", DataLocation.DATA_BLOCK),
+        9:  ("ScrollBars",    "", DataLocation.DATA_BLOCK),
         10: ("Display", "<I", DataLocation.EXTRA_BLOCK),
         11: ("LogicalSize",   "B",   DataLocation.EXTRA_BLOCK),
         12: ("ScrollPosition",       "<I", DataLocation.EXTRA_BLOCK),
