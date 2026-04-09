@@ -74,7 +74,7 @@ class FormControl:
             if (
                     (map_data[2] == DataLocation.DATA_BLOCK or
                      map_data[2] == DataLocation.BOTH) and
-                     map_data[0] in self.properties
+                    map_data[0] in self.properties
             ):
                 if map_data[2] == DataLocation.BOTH:
                     val = self.properties[map_data[0]][0]
@@ -89,7 +89,7 @@ class FormControl:
             if (
                     (map_data[2] == DataLocation.EXTRA_BLOCK or
                      map_data[2] == DataLocation.BOTH) and
-                     map_data[0] in self.properties
+                    map_data[0] in self.properties
             ):
                 if map_data[2] == DataLocation.BOTH:
                     val = self.properties[map_data[0]][1]
