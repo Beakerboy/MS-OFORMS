@@ -5,8 +5,8 @@ from ms_oforms.Models.form_control import FormControl
 def test_generate_flags() -> None:
     form = FormControl()
     form.properties["NextID"] = 5
-    form.properties["Display"] = 0
-    form.properties["LogicalSize"] = 0x0d3b00000fd0
+    form.properties["Display"] = 0x0d3b00000fd0
+    form.properties["LogicalSize"] = 0
     form.properties["ShapeCookie"] = 8
     form.properties["DrawBuffer"] = 0x7d00
     expected = 0x0c000c08
@@ -16,8 +16,8 @@ def test_generate_flags() -> None:
 def test_generate_data() -> None:
     form = FormControl()
     form.properties["NextID"] = 5
-    form.properties["Display"] = 5
-    form.properties["LogicalSize"] = 0x0d3b00000fd0
+    form.properties["Display"] = 0x0d3b00000fd0
+    form.properties["LogicalSize"] = 0
     form.properties["ShapeCookie"] = 8
     form.properties["DrawBuffer"] = 0x7d00
     expected = b'\x05\x00\x00\x00\x08\x00\x00\x00\x00}\x00\x00'
