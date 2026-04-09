@@ -58,9 +58,9 @@ def test_to_bytes() -> None:
     site1_mask = b'\xf5\x01\x00\x00'
     site1_data = {
         "Name": b'Label',
-        "TagData": b'\x00\x80\x01\x00',
-        "ID": b'\x00\x002\x00',
-        "HelpContextId": b'\x00\x00<\x00',
+        "TagData": b'\x00',
+        "ID": b'2\x00\x00\x00\x00',
+        "HelpContextId": b'<\x00\x00\x00',
         "BitFlags": b'\x00\x00\x00\x00',
         "TabIndex": b'\x00\x00',
         "ControlTipText": b"Label1"
