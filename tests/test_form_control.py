@@ -16,4 +16,6 @@ def test_to_bytes() -> None:
         olefile.extract_stream('f', 'tests/files')
     with open(path3, 'rb') as file:
         expected = file.read
+    form = FormControl()
+    assert form.to_bytes() == expected
         
