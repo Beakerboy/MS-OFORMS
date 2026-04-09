@@ -59,10 +59,10 @@ def test_to_bytes() -> None:
     site1_data = {
         "Name": b'Label1',
         "ID": 1,
-        "BitFlags": b'2\x00\x00\x00\x00',
+        "BitFlags": b'2\x00\x00\x00',
         "ObjectStream": 0x3c,
         "TabIndex": 0,
-        "ControlTipText": b"\x15\x00",
+        "ClsidCacheIndex": 0x15,
         "Position": b'\x00\x00\x00\x00\x00\x00\x00\x00'
         
     }
