@@ -150,8 +150,8 @@ class FormControl:
                     elif map_data[2] == DataLocation.EXTRA_BLOCK:
                         site_extra += site[1][name]
             site_records += (
-                struct.pack('<HHH', 0, 4 + len(site_data) + len(site_extra), site[0]) +
-                site_data + site_extra
+                struct.pack('<HH', 0, 4 + len(site_data) + len(site_extra)) +
+                site[0] + site_data + site_extra
             )
         depth = self.depth
         pad_size = min(4 - len(depth) % 4, 3)
