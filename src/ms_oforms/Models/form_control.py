@@ -115,8 +115,8 @@ class FormControl:
 
     def generate_site_data(self: T) -> bytes:
         output = struct.pack('<H', len(self.class_table))
-        for class in self.class_table:
-            output += class
+        for item in self.class_table:
+            output += item
         output += struct.pack('<H', len(self.sites))
         return output
 
