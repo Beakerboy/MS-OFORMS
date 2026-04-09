@@ -59,6 +59,10 @@ def test_to_bytes() -> None:
         "Name": b'\x00\x00\x06\x00'
         "ID": b'\x00\x80\x01\x00'
         "BitFlags": b'\x00\x00\x04\x00'
+        "ObjectStreamSize: b'\x00\x00\x00\x00'
+        "TabIndex": b'\x00\x00'
+        "ClsidCacheIndex": b'\x00\x00'
+        "GroupId": b'\x00\x00'
     }
     form.sites = [
         (0x01f5, site1_data, b''), (0, b'', b''), (0, b'', b''),
