@@ -24,7 +24,7 @@ def test_generate_data() -> None:
     assert form.generate_data_block() == expected
 
 
-def test_generate_data() -> None:
+def test_generate_extra() -> None:
     form = FormControl()
     form.properties["NextID"] = 5
     form.properties["Display"] = 0x0d3b00000fd0
