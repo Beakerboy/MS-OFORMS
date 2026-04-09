@@ -60,8 +60,8 @@ def test_to_bytes() -> None:
         "Name": b'Label1',
         "ID": 1,
         "BitFlags": b'2\x00\x00\x00\x00',
-        "ObjectStream": b'<\x00\x00\x00',
-        "TabIndex": b'\x00\x00',
+        "ObjectStream": 0x3c,
+        "TabIndex": 0,
         "ControlTipText": b"\x15\x00",
         "Position": b'\x00\x00\x00\x00\x00\x00\x00\x00'
         
