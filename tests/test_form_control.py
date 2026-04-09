@@ -5,6 +5,7 @@ from ms_oforms.Models.form_control import FormControl
 def test_generate_flags() -> None;
     form = FormControl()
     form.properties["NextID"] = 5
+    form.properties["Display"] = 5
     form.properties["LogicalSize"] = 5
     expected = 0x0c000c08
     assert form.generate_prop_mask() == expected
