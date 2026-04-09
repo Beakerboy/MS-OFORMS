@@ -56,4 +56,5 @@ def test_to_bytes() -> None:
     form.properties["ShapeCookie"] = 8
     form.properties["DrawBuffer"] = 0x7d00
     form.sites = [b'1', b'2', b'3', b'4', b'5']
+    form.depth = b'\x00\x85\x01'  # 5 consecutive ssites with type 1 depth 0
     assert form.to_bytes() == expected
