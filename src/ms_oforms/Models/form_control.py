@@ -41,8 +41,8 @@ class FormControl:
         17: ("SpecialEffect",   "B",   DataLocation.DATA_BLOCK),
         18: ("BorderColor",    "<I", DataLocation.DATA_BLOCK),
         19: ("Caption",   "", DataLocation.BOTH),
-        20: ("Font",   "<I", DataLocation.DATA_BLOCK),
-        21: ("Picture", "B",   DataLocation.DATA_BLOCK),
+        20: ("Font",   "<I", DataLocation.STREAM_DATA),
+        21: ("Picture", "B",   DataLocation.STREAM_DATA),
         22: ("Zoom",    "B",   DataLocation.DATA_BLOCK),
         23: ("PictureAligmment",  "", DataLocation.DATA_BLOCK),
         24: ("PictureTiling", "", DataLocation.DATA_BLOCK),
@@ -55,16 +55,19 @@ class FormControl:
         self._min_ver = 0
         self._maj_ver = 4
         self.properties = {}
+        self.class_table = []
+        self.sites = []
 
     def to_bytes(self: T) -> bytes:
         data = self.generate_data_block()
         extra = self.generate_extra_data_block()
+        stream = self.generate_stream_data()
         cb_form = 4 + len(data) + len(extra)
         output = (
             struct.pack(
                 '<BBHI', self._min_ver, self._maj_ver, cb_form,
                 self.generate_prop_mask()
-            ) + data + extra
+            ) + data + extra + stream
         )
         return output
 
@@ -96,6 +99,23 @@ class FormControl:
                 else:
                     val = self.properties[map_data[0]]
                 output += struct.pack('<Q', val)
+        return output
+
+    def generate_stream_data(self: T) -> bytes:
+        output = b''
+        for bit, map_data in self.FORM_PROP_MAP.items():
+            if (
+                    map_data[2] == DataLocation.STREAM_DATA and
+                    map_data[0] in self.properties
+            ):
+                val = self.properties[map_data[0]]
+                output += struct.pack('<Q', val)
+        return output
+
+    def generate_site_data(self: T) -> bytes:
+        output = struct.pack('<H' len(self.class_table))
+        output += self.class_table[0]
+        output += struct.pack('<H' len(self.sites))
         return output
 
     def generate_prop_mask(self: T) -> int:
