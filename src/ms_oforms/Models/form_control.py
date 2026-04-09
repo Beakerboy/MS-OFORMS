@@ -115,9 +115,17 @@ class FormControl:
 
     def generate_site_data(self: T) -> bytes:
         output = struct.pack('<H', len(self.class_table))
+        site_data = b''
+        for site in self.sites:
+            site_data += site
+        depths = self.depths
+        pad_size = min(4 - len(depths) % 4, 3)
+        padded_depth = depths + '\x00' * pad_size
+        count_of_bytes = len(padded_depth) + site_data
         for item in self.class_table:
             output += item
-        output += struct.pack('<I', len(self.sites))
+        output += struct.pack('<II', len(self.sites), count_of_bytes)
+        output += padded_depth + site_data
         return output
 
     def generate_prop_mask(self: T) -> int:
