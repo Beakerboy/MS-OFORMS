@@ -65,22 +65,18 @@ class FormControl:
         return output
 
     def generate_prop_mask(self: T) -> int:
-    """
-    Recreates a 4-byte PropMask bitfield based on a dictionary of properties.
+        """
+        Recreates a 4-byte PropMask bitfield based on a dictionary of properties.
+        """
+        mask = 0
     
-    :param properties: The dictionary containing current values (e.g., {'Caption': 'Hi'})
-    :param prop_map: The mapping of BitIndex -> (Name, ...) used by the parser.
-    :return: A 32-bit integer representing the PropMask.
-    """
-    mask = 0
-    
-    # Iterate through the known mapping for this object type
-    for bit, map_data in self.FORM_PROP_MAP.items():
-        # Get the property name from the map (usually the first element)
-        prop_name = map_data[0] if isinstance(map_data, tuple) else map_data
+        # Iterate through the known mapping for this object type
+        for bit, map_data in self.FORM_PROP_MAP.items():
+            # Get the property name from the map (usually the first element)
+            prop_name = map_data[0] if isinstance(map_data, tuple) else map_data
         
-        # If the property exists in the dict and is not None, set the bit
-        if prop_name in self.properties and self.properties[prop_name] is not None:
-            mask |= (1 << bit)
+            # If the property exists in the dict and is not None, set the bit
+            if prop_name in self.properties and self.properties[prop_name] is not None:
+                mask |= (1 << bit)
             
-    return mask
+        return mask
