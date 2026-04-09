@@ -71,7 +71,7 @@ def test_to_bytes() -> None:
         "ObjectStream": 0x34,
         "TabIndex": 1,
         "ClsidCacheIndex": 0x17,
-        "Position": b'\x00\x00\x00\x00\x00\x00\x00\x00'
+        "Position": b'\x00\x00\x00\x00\xa7\x01\x00\x00'
         
     }
     site2_mask = b'\xe5\x01\x00\x00'
