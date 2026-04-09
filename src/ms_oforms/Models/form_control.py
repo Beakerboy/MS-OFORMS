@@ -7,9 +7,10 @@ T = TypeVar('T', bound='FormControl')
 
 
 class DataLocation(Enum):
-    DATA_BLOCK = auto()
+    DATA_BLOCK  = auto()
     EXTRA_BLOCK = auto()
     STREAM_DATA = auto()
+    NONE        = auto()
 
 
 class FormControl:
@@ -18,22 +19,22 @@ class FormControl:
     """
 
     FORM_PROP_MAP = {
-        0:  ("BackColor", "<I", DataLocation.DATA_BLOCK),
-        1:  ("ForeColor", "<I", DataLocation.DATA_BLOCK),
-        2:  ("NextID",    "<I", DataLocation.DATA_BLOCK),
-        3:  ("Left",      "<i", DataLocation.DATA_BLOCK),
-        4:  ("Top",       "<i", DataLocation.DATA_BLOCK),
-        5:  ("Width",     "<i", DataLocation.DATA_BLOCK),
-        6:  ("Height",    "<i", DataLocation.DATA_BLOCK),
-        7:  ("Caption",   "<I", DataLocation.EXTRA_BLOCK),
-        8:  ("Font",      "<I", DataLocation.STREAM_DATA),
-        9:  ("HelpID",    "<I", DataLocation.DATA_BLOCK),
-        10: ("MouseIcon", "<I", DataLocation.STREAM_DATA),
-        11: ("Pointer",   "B",   DataLocation.DATA_BLOCK),
-        12: ("Tag",       "<I", DataLocation.EXTRA_BLOCK),
-        13: ("Picture",   "<I", DataLocation.STREAM_DATA),
-        14: ("Zoom",      "<H", DataLocation.DATA_BLOCK),
-        15: ("PicAlign",  "B",   DataLocation.DATA_BLOCK),
+        0:  ("Unused1",   "",   DataLocation.NONE),
+        1:  ("BackColor", "<I", DataLocation.DATA_BLOCK),
+        2:  ("ForeColor", "<I", DataLocation.DATA_BLOCK),
+        3:  ("NextID",    "<I", DataLocation.DATA_BLOCK),
+        4:  ("Unused2",   "",   DataLocation.NONE),
+        5:  ("Unused3",   "",   DataLocation.NONE),
+        6:  ("Boolean",     "<i", DataLocation.DATA_BLOCK),
+        7:  ("Border",   "<I", DataLocation.EXTRA_BLOCK),
+        8:  ("MousePointer",      "<I", DataLocation.STREAM_DATA),
+        9:  ("ScrollBars",    "<I", DataLocation.DATA_BLOCK),
+        10: ("Display", "<I", DataLocation.STREAM_DATA),
+        11: ("LogicalSize",   "B",   DataLocation.DATA_BLOCK),
+        12: ("ScrollPosition",       "<I", DataLocation.EXTRA_BLOCK),
+        13: ("Group",   "<I", DataLocation.STREAM_DATA),
+        14: ("Reserved",      "<H", DataLocation.DATA_BLOCK),
+        15: ("MouseIcon",  "B",   DataLocation.DATA_BLOCK),
         16: ("PicTile",   "B",   DataLocation.DATA_BLOCK),
         17: ("PicSize",   "B",   DataLocation.DATA_BLOCK),
         18: ("Cookie",    "<I", DataLocation.DATA_BLOCK),
