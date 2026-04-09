@@ -2,11 +2,13 @@ import struct
 from typing import TypeVar
 
 
-T = TypeVar('T', bound='Form')
+T = TypeVar('T', bound='FormControl')
 
 
-class Form:
-
+class FormControl
+    """
+    2.2.10.1 FormControl
+    """
     def __init__(self: T) -> None:
         self._min_ver = 0
         self._maj_ver = 4
