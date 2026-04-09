@@ -67,7 +67,7 @@ def test_to_bytes() -> None:
     }
     site2_data = {
         "Name": b'Username',
-        "ID": 1,
+        "ID": 2,
         "ObjectStream": 0x34,
         "TabIndex": 1,
         "ClsidCacheIndex": 0x17,
