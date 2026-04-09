@@ -48,6 +48,6 @@ def test_to_bytes() -> None:
         olefile = OleFile.create_from_file(path2)
         olefile.extract_stream('f', 'tests/files')
     with open(path3, 'rb') as file:
-        expected = file.read
+        expected = file.read()
     form = FormControl()
     assert form.to_bytes() == expected
