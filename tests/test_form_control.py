@@ -55,8 +55,13 @@ def test_to_bytes() -> None:
     form.properties["LogicalSize"] = 0
     form.properties["ShapeCookie"] = 8
     form.properties["DrawBuffer"] = 0x7d00
+    site1_data = {
+        "Name": b'\x00\x00\x06\x00'
+        "ID": b'\x00\x80\x01\x00'
+        "BitFlags": b'\x00\x00\x04\x00'
+    }
     form.sites = [
-        (0x01f5, b'\x00\x00\x06\x00\x00\x80\x01\x00', b''), (0, b'', b''), (0, b'', b''),
+        (0x01f5, site1_data, b''), (0, b'', b''), (0, b'', b''),
         (0, b'', b''), (0, b'', b'')
     ]
     form.depth = b'\x00\x85\x01'  # 5 consecutive ssites with type 1 depth 0
