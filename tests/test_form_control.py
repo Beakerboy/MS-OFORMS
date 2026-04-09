@@ -2,7 +2,7 @@ from ms_cfb.ole_file import OleFile
 from ms_oforms.Models.form_control import FormControl
 
 
-def test_generate_flags() -> None;
+def test_generate_flags() -> None:
     form = FormControl()
     form.properties["NextID"] = 5
     form.properties["Display"] = 5
