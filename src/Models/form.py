@@ -20,4 +20,3 @@ class Form:
             self.design_ex_data
         )
         return output
-        
