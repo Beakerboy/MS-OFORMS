@@ -84,9 +84,18 @@ def test_to_bytes() -> None:
         "ClsidCacheIndex": 0x15,
         "Position": b'\x00\x00\x00\x00\x00\x00\xf6\x04'
     }
+    site4_mask = b'\xf5\x01\x00\x00'
+    site4_data = {
+        "Name": b'Password',
+        "ID": 4,
+        "ObjectStream": 0x38,
+        "TabIndex": 3,
+        "ClsidCacheIndex": 0x17,
+        "Position": b'\x00\x00\x00\x00\x9d\x06\x00\x00'
+    }
     form.sites = [
         (site1_mask, site1_data), (site2_mask, site2_data), (site3_mask, site3_data),
-        (site1_mask, site1_data), (site1_mask, site1_data)
+        (site4_mask, site4_data), (site1_mask, site1_data)
     ]
     form.depth = b'\x00\x85\x01'  # 5 consecutive ssites with type 1 depth 0
     assert form.to_bytes() == expected
