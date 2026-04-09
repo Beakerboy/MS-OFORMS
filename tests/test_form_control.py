@@ -55,4 +55,5 @@ def test_to_bytes() -> None:
     form.properties["LogicalSize"] = 0
     form.properties["ShapeCookie"] = 8
     form.properties["DrawBuffer"] = 0x7d00
+    form.sites = [1, 2, 3, 4, 5]
     assert form.to_bytes() == expected
