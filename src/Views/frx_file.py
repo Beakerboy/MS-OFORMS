@@ -1,5 +1,7 @@
 import struct
 import io
+from ms_cfb.ole_file import OleFile
+
 
 class FRX:
     def __init__(self, f_stream: bytes, o_stream: bytes, compobj: bytes):
