@@ -60,7 +60,8 @@ class FormControl:
         5:  ("ObjectStreamSize", "<I", DataLocation.DATA_BLOCK),
         6:  ("TabIndex", "<H", DataLocation.DATA_BLOCK),
         7:  ("ClsidCacheIndex", "<H", DataLocation.DATA_BLOCK),
-        8:  ("GroupId", "<H", DataLocation.DATA_BLOCK)
+        8:  ("GroupId", "<H", DataLocation.DATA_BLOCK),
+        11: ("ControlTipText", "<I", DataLocation.BOTH)
     }
 
     def __init__(self: T) -> None:
@@ -133,7 +134,11 @@ class FormControl:
             for bit, map_data in self.SITE_PROP_MAP.items():
                 name = map_data[0]
                 if name in site[1]:
-                    site_data += site[1][name]
+                    if map_data[2] == DataLocation.BOTH:
+                        value = len(site[1][name]) * 2 + 1
+                        site_data += steuct.pack("<I", value)
+                    elif map_data[2] == DataLocation.DATA_BLOCK:
+                        site_data += site[1][name]
             site_extra = site[2]
             site_records += (
                 struct.pack('<HHH', 0, 4 + len(site_data) + len(site_extra), site[0]) +
