@@ -5,7 +5,7 @@ from typing import TypeVar
 T = TypeVar('T', bound='FormControl')
 
 
-class FormControl
+class FormControl:
     """
     2.2.10.1 FormControl
     """
