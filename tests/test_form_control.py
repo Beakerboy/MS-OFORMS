@@ -68,7 +68,7 @@ def test_to_bytes() -> None:
     site2_data = {
         "Name": b'Username',
         "ID": 2,
-        "ObjectStream": 0x34,
+        "ObjectStreamSize": 0x34,
         "TabIndex": 1,
         "ClsidCacheIndex": 0x17,
         "Position": b'\x00\x00\x00\x00\xa7\x01\x00\x00'
@@ -79,7 +79,7 @@ def test_to_bytes() -> None:
         "Name": b'Label2',
         "ID": 3,
         "BitFlags": b'2\x00\x00\x00',
-        "ObjectStream": 0x38,
+        "ObjectStreamSize": 0x38,
         "TabIndex": 2,
         "ClsidCacheIndex": 0x15,
         "Position": b'\x00\x00\x00\x00\x00\x00\xf6\x04'
@@ -88,7 +88,7 @@ def test_to_bytes() -> None:
     site4_data = {
         "Name": b'Password',
         "ID": 4,
-        "ObjectStream": 0x38,
+        "ObjectStreamSize": 0x38,
         "TabIndex": 3,
         "ClsidCacheIndex": 0x17,
         "Position": b'\x00\x00\x00\x00\x9d\x06\x00\x00'
