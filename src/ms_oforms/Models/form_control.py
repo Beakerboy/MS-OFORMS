@@ -11,6 +11,7 @@ class DataLocation(Enum):
     EXTRA_BLOCK = auto()
     STREAM_DATA = auto()
     NONE        = auto()
+    BOTH        = auto()
 
 
 class FormControl:
@@ -20,26 +21,26 @@ class FormControl:
 
     # All DATA_BLOCK data is for bytes.
     FORM_PROP_MAP = {
-        0:  ("Unused1",      "",   DataLocation.NONE),
-        1:  ("BackColor",    "", DataLocation.DATA_BLOCK),
-        2:  ("ForeColor",    "", DataLocation.DATA_BLOCK),
-        3:  ("NextID",       "", DataLocation.DATA_BLOCK),
-        4:  ("Unused2",      "",  DataLocation.NONE),
-        5:  ("Unused3",      "",   DataLocation.NONE),
-        6:  ("Boolean",      "", DataLocation.DATA_BLOCK),
-        7:  ("Border",       "", DataLocation.DATA_BLOCK),
-        8:  ("MousePointer", "", DataLocation.DATA_BLOCK),
-        9:  ("ScrollBars",    "", DataLocation.DATA_BLOCK),
-        10: ("Display", "<I", DataLocation.EXTRA_BLOCK),
-        11: ("LogicalSize",   "B",   DataLocation.EXTRA_BLOCK),
-        12: ("ScrollPosition",       "<I", DataLocation.EXTRA_BLOCK),
+        0:  ("Unused1",        "",   DataLocation.NONE),
+        1:  ("BackColor",      "", DataLocation.DATA_BLOCK),
+        2:  ("ForeColor",      "", DataLocation.DATA_BLOCK),
+        3:  ("NextID",         "", DataLocation.DATA_BLOCK),
+        4:  ("Unused2",        "",  DataLocation.NONE),
+        5:  ("Unused3",        "",   DataLocation.NONE),
+        6:  ("Boolean",        "", DataLocation.DATA_BLOCK),
+        7:  ("Border",         "", DataLocation.DATA_BLOCK),
+        8:  ("MousePointer",   "", DataLocation.DATA_BLOCK),
+        9:  ("ScrollBars",     "", DataLocation.DATA_BLOCK),
+        10: ("Display",        "<Q", DataLocation.EXTRA_BLOCK),
+        11: ("LogicalSize",    "<Q",   DataLocation.EXTRA_BLOCK),
+        12: ("ScrollPosition", "<Q", DataLocation.EXTRA_BLOCK),
         13: ("Group",   "<I", DataLocation.STREAM_DATA),
         14: ("Reserved",      "<H", DataLocation.DATA_BLOCK),
         15: ("MouseIcon",  "B",   DataLocation.DATA_BLOCK),
         16: ("Cycle",   "B",   DataLocation.DATA_BLOCK),
         17: ("SpecialEffect",   "B",   DataLocation.DATA_BLOCK),
         18: ("BorderColor",    "<I", DataLocation.DATA_BLOCK),
-        19: ("Caption",   "<I", DataLocation.DATA_BLOCK),
+        19: ("Caption",   "", DataLocation.BOTH),
         20: ("Font",   "<I", DataLocation.DATA_BLOCK),
         21: ("Picture", "B",   DataLocation.DATA_BLOCK),
         22: ("Zoom",    "B",   DataLocation.DATA_BLOCK),
@@ -71,10 +72,15 @@ class FormControl:
         output = b''
         for bit, map_data in self.FORM_PROP_MAP.items():
             if (
-                    map_data[2] == DataLocation.DATA_BLOCK and
-                    map_data[0] in self.properties
+                    (map_data[2] == DataLocation.DATA_BLOCK or
+                     map_data[2] == DataLocation.BOTH) and
+                     map_data[0] in self.properties
             ):
-                output += struct.pack('<I', self.properties[map_data[0]])
+                if map_data[2] == DataLocation.BOTH:
+                    val = self.properties[map_data[0]][0]
+                else:
+                    val = self.properties[map_data[0]]
+                output += struct.pack('<I', val)
         return output
             
     def generate_prop_mask(self: T) -> int:
