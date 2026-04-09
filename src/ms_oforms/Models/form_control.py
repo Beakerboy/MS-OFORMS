@@ -1,14 +1,37 @@
 import struct
+from enum import Enum, auto
 from typing import TypeVar
 
 
 T = TypeVar('T', bound='FormControl')
 
 
+class DataLocation(Enum):
+    DATA_BLOCK = auto()
+    EXTRA_BLOCK = auto()
+    STREAM_DATA = auto()
+
+
 class FormControl:
     """
     2.2.10.1 FormControl
     """
+
+    FORM_PROP_MAP = {
+        0: ("BackColor", "<I", DataLocation.DATA_BLOCK), 1: ("ForeColor", "<I", DataLocation.DATA_BLOCK),
+        2: ("NextID",    "<I", DataLocation.DATA_BLOCK), 3: ("Left",      "<i", DataLocation.DATA_BLOCK),
+        4: ("Top",       "<i", DataLocation.DATA_BLOCK), 5: ("Width",     "<i", DataLocation.DATA_BLOCK),
+        6: ("Height",    "<i", DataLocation.DATA_BLOCK), 7: ("Caption",   "<I", DataLocation.EXTRA_BLOCK),
+        8: ("Font",      "<I", DataLocation.STREAM_DATA),9: ("HelpID",    "<I", DataLocation.DATA_BLOCK),
+        10:("MouseIcon", "<I", DataLocation.STREAM_DATA),11:("Pointer",   "B",   DataLocation.DATA_BLOCK),
+        12:("Tag",       "<I", DataLocation.EXTRA_BLOCK),13:("Picture",   "<I", DataLocation.STREAM_DATA),
+        14:("Zoom",      "<H", DataLocation.DATA_BLOCK), 15:("PicAlign",  "B",   DataLocation.DATA_BLOCK),
+        16:("PicTile",   "B",   DataLocation.DATA_BLOCK), 17:("PicSize",   "B",   DataLocation.DATA_BLOCK),
+        18:("Cookie",    "<I", DataLocation.DATA_BLOCK), 19:("DrawBuf",   "<I", DataLocation.DATA_BLOCK),
+        20:("BordCol",   "<I", DataLocation.DATA_BLOCK), 21:("BordStyle", "B",   DataLocation.DATA_BLOCK),
+        22:("Effect",    "B",   DataLocation.DATA_BLOCK), 23:("FormSize",  "<I", DataLocation.DATA_BLOCK),
+    }
+
     def __init__(self: T) -> None:
         self._min_ver = 0
         self._maj_ver = 4
