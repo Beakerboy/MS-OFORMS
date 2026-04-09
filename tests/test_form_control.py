@@ -96,11 +96,11 @@ def test_to_bytes() -> None:
     site5_mask = b'\xe5\x01\x00\x00'
     site5_data = {
         "Name": b'LoginButton',
-        "ID": 4,
+        "ID": 5,
         "ObjectStreamSize": 0x38,
-        "TabIndex": 3,
-        "ClsidCacheIndex": 0x17,
-        "Position": b'\x00\x00\x00\x00\x9d\x06\x00\x00'
+        "TabIndex": 4,
+        "ClsidCacheIndex": 0x11,
+        "Position": b'\x00\x00\x00\x00\xec\x09\x00\x00'
     }
     form.sites = [
         (site1_mask, site1_data), (site2_mask, site2_data), (site3_mask, site3_data),
