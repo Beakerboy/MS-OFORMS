@@ -50,4 +50,9 @@ def test_to_bytes() -> None:
     with open(path3, 'rb') as file:
         expected = file.read()
     form = FormControl()
+    form.properties["NextID"] = 5
+    form.properties["Display"] = 0x0d3b00000fd0
+    form.properties["LogicalSize"] = 0
+    form.properties["ShapeCookie"] = 8
+    form.properties["DrawBuffer"] = 0x7d00
     assert form.to_bytes() == expected
