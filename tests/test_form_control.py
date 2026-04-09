@@ -54,7 +54,8 @@ def test_to_bytes() -> None:
     form.properties["Display"] = 0x0d3b00000fd0
     form.properties["LogicalSize"] = 0
     form.properties["ShapeCookie"] = 8
-    form.properties["DrawBuffer"] = 0x7d00
+    form.properties["DrawBuffer"] = 0x7d0
+    site1_mask = b'\xf5\x01\x00\x00'
     site1_data = {
         "Name": b'Label',
         "TagData": b'\x00\x80\x01\x00',
@@ -66,8 +67,8 @@ def test_to_bytes() -> None:
     }
     site1_extra = b'Label1\x00\x00\x00\x00\x00\x00\x00\x00'
     form.sites = [
-        (0x01f5, site1_data, site1_extra), (0x01f5, site1_data, b''), (0x01f5, site1_data, b''),
-        (0x01f5, site1_data, b''), (0x01f5, site1_data, b'')
+        (site1_mask, site1_data, site1_extra), (site1_mask, site1_data, b''), (site1_mask, site1_data, b''),
+        (site1_mask, site1_data, b''), (site1_mask, site1_data, b'')
     ]
     form.depth = b'\x00\x85\x01'  # 5 consecutive ssites with type 1 depth 0
     assert form.to_bytes() == expected
