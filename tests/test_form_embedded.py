@@ -1,3 +1,7 @@
+from ms_cfb.ole_file import OleFile
+from ms_oforms.Models.form_embedded import FormEmbedded
+
+
 def test_to_bytes() -> None:
     path1 = 'tests/files/Login.frx'
     path2 = 'tests/files/Login.bin'
@@ -12,6 +16,6 @@ def test_to_bytes() -> None:
         olefile.extract_stream('o', 'tests/files')
     with open(path3, 'rb') as file:
         expected = file.read()
-    form = FormEmbeddedControl()
+    form = FormEmbedded()
     
     assert form.to_bytes() == expected
