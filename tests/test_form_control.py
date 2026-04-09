@@ -13,7 +13,7 @@ def test_generate_flags() -> None:
     assert form.generate_prop_mask() == expected
 
 
-def tests_to_bytes() -> None:
+def to_bytes() -> None:
     path1 = 'tests/files/Login.frx'
     path2 = 'tests/files/Login.bin'
     path3 = 'tests/files/f.bin'
