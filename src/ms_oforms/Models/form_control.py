@@ -62,12 +62,13 @@ class FormControl:
         data = self.generate_data_block()
         extra = self.generate_extra_data_block()
         stream = self.generate_stream_data()
+        site = self.generate_site_data()
         cb_form = 4 + len(data) + len(extra)
         output = (
             struct.pack(
                 '<BBHI', self._min_ver, self._maj_ver, cb_form,
                 self.generate_prop_mask()
-            ) + data + extra + stream
+            ) + data + extra + stream + site
         )
         return output
 
