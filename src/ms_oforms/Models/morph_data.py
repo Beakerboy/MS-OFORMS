@@ -26,7 +26,6 @@ class MorphData(ControlBase):
     def __init__(self: T) -> None:
         super().__init__()
         self.prop_mask_size = 8
-        self.properties = {}
 
     def to_bytes(self: T) -> bytes:
         text_props = TextProps()
