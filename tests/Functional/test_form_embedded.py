@@ -54,7 +54,7 @@ def test_to_bytes() -> None:
     textbox2.properties = {
         "Various": b'\x1bH\x80,',
         "Size": b'\xb6\x0f\x00\x00\x7b\x02\x00\x00',
-        "PasswordChar": 0,
+        "PasswordChar": 0x2a,
         "FontName": b'Tahoma',
         "FontHeight": 0xa5,
         "FontCharset": 0x00,
