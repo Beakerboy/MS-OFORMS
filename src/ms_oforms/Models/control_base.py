@@ -47,7 +47,7 @@ class ControlBase:
         prop_mask = self.generate_prop_mask()
         return (
             struct.pack('<BBHI', 0, 2, cb_label, prop_mask) +
-            data + extra
+            self.compress_and_pad(data) + extra
         )
 
     @staticmethod
