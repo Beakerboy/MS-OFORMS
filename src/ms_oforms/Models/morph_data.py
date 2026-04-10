@@ -22,6 +22,8 @@ class MorphData(ControlBase):
         11: ("ListWidth", "<I", DataLocation.DATA_BLOCK)
     }
 
+    ClsidCacheIndex = 0x17
+
     def __init__(self: T) -> None:
         super().__init__()
         self.prop_mask_size = 8
