@@ -15,4 +15,5 @@ class TextProps(StructureBase):
         2:  ("FontHeight", "<I", DataLocation.DATA_BLOCK),
         4:  ("FontCharset", "<B", DataLocation.DATA_BLOCK),
         5:  ("FontPitchAndFamily", "<B", DataLocation.DATA_BLOCK),
+        6:  ("ParagraphAlign", "<B", DataLocation.DATA_BLOCK)
     }
