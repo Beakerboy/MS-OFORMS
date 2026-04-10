@@ -8,6 +8,10 @@ T = TypeVar('T', bound='ControlBase')
 
 class ControlBase:
 
+    def __init__(self: T) -> None:
+        self.prop_mask_size = 4
+        self.properties = {}
+
     def generate_prop_mask(self: T) -> int:
         """
         Recreates a 4-byte PropMask bitfield based on a dictionary of properties.
@@ -44,10 +48,11 @@ class ControlBase:
                     elif map_data[2] == DataLocation.EXTRA_BLOCK:
                         extra += self.compress_and_pad(value)
         data = self.pad(data)
-        cb_label = 4 + len(data) + len(extra)
+        cb_label = self.prop_mask_size + len(data) + len(extra)
         prop_mask = self.generate_prop_mask()
+        format = '<BBHI' if self.prop_mask_size = 4 else '<BBHQ'
         return (
-            struct.pack('<BBHI', 0, 2, cb_label, prop_mask) +
+            struct.pack(format, 0, 2, cb_label, prop_mask) +
             data + extra
         )
 
