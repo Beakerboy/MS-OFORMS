@@ -1,4 +1,3 @@
-import struct
 from ms_oforms.Models.structure_base import StructureBase
 from ms_oforms.Enums.data_location import DataLocation
 from typing import TypeVar
