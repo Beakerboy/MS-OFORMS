@@ -49,6 +49,6 @@ class MorphData(ControlBase):
         cb_label = 8 + len(data) + len(extra)
         prop_mask = self.generate_prop_mask()
         return (
-            struct.pack('<BBHI', 0, 2, cb_label, prop_mask) +
+            struct.pack('<BBHQ', 0, 2, cb_label, prop_mask) +
             data + extra
         )
