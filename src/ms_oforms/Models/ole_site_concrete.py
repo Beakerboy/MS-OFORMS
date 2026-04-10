@@ -1,3 +1,4 @@
+from ms_oforms.Models.structure_base import StructureBase
 from ms_oforms.Enums.data_location import DataLocation
 from typing import TypeVar
 
@@ -5,7 +6,7 @@ from typing import TypeVar
 T = TypeVar('T', bound='OleSite')
 
 
-class OleSite:
+class OleSite(StructureBase):
 
     SITE_PROP_MAP = {
         0:  ("Name", "<I", DataLocation.BOTH),
@@ -20,6 +21,3 @@ class OleSite:
         9:  ("GroupId", "<H", DataLocation.DATA_BLOCK),
         11: ("ControlTipText", "<I", DataLocation.BOTH)
     }
-
-    def to_bytes(self: T) -> bytes:
-        return b''
