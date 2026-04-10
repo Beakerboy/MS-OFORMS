@@ -63,7 +63,7 @@ def test_to_bytes() -> None:
     command = CommandButton()
     command.properties = {
         "Caption": b'Log In',
-        "Size": b'\xb6\x0f\x00\x00\x7b\x02\x00\x00',
+        "Size": b'\xb6\x0f\x00\x00O\x03\x00\x00',
         "FontName": b'Tahoma',
         "FontHeight": 0xa5,
         "FontCharset": 0x00,
