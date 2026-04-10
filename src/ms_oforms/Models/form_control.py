@@ -1,6 +1,6 @@
 import struct
 from ms_oforms.Enums.data_location import DataLocation
-from typing import TypeVar
+from typing import Any, TypeVar
 
 
 T = TypeVar('T', bound='FormControl')
@@ -56,7 +56,7 @@ class FormControl:
     def __init__(self: T) -> None:
         self._min_ver = 0
         self._maj_ver = 4
-        self.properties = {}
+        self.properties: dict[str, Any] = {}
         self.class_table = []
         self.sites = []
 
