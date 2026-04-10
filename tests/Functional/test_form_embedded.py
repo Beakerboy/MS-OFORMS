@@ -42,7 +42,7 @@ def test_to_bytes() -> None:
     label2 = Label()
     label2.properties = {
         "Caption": b'Password',
-        "Size": b'\xca\x05\x00\x00\xa7\x01\x00\x00',
+        "Size": b'\xf6\x04\x00\x00\xa7\x01\x00\x00',
         "FontName": b'Tahoma',
         "FontHeight": 0xa5,
         "FontCharset": 0x00,
