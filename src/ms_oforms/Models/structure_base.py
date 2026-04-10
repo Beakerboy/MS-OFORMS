@@ -17,7 +17,7 @@ class StructureBase:
         Recreates a 4-byte PropMask bitfield based on a dictionary of properties.
         """
         mask = 0
-    
+
         # Iterate through the known mapping for this object type
         for bit, map_data in self.PROP_MAP.items():
             # Get the property name from the map (usually the first element)
@@ -26,7 +26,6 @@ class StructureBase:
             # If the property exists in the dict and is not None, set the bit
             if prop_name in self.properties and self.properties[prop_name] is not None:
                 mask |= (1 << bit)
-            
         return mask
 
     def to_bytes(self: T) -> bytes:
@@ -36,20 +35,20 @@ class StructureBase:
         data = b''
         extra = b''
         for bit, map_data in self.PROP_MAP.items():
-                name = map_data[0]
-                if name in self.properties:
-                    value = self.properties[name]
-                    if map_data[2] == DataLocation.BOTH:
-                        cba = len(value) | 0x80000000
-                        data += struct.pack("<I", cba)
-                        extra += self.compress_and_pad(value)
-                    elif map_data[2] == DataLocation.DATA_BLOCK:
-                        if map_data[1] == "s":
-                            data += value
-                        else:
-                            data += struct.pack(map_data[1], value)
-                    elif map_data[2] == DataLocation.EXTRA_BLOCK:
-                        extra += self.compress_and_pad(value)
+            name = map_data[0]
+            if name in self.properties:
+                value = self.properties[name]
+                if map_data[2] == DataLocation.BOTH:
+                    cba = len(value) | 0x80000000
+                    data += struct.pack("<I", cba)
+                    extra += self.compress_and_pad(value)
+                elif map_data[2] == DataLocation.DATA_BLOCK:
+                    if map_data[1] == "s":
+                        data += value
+                    else:
+                        data += struct.pack(map_data[1], value)
+                elif map_data[2] == DataLocation.EXTRA_BLOCK:
+                    extra += self.compress_and_pad(value)
         data = self.pad(data)
         cb_label = self.prop_mask_size + len(data) + len(extra)
         prop_mask = self.generate_prop_mask()
