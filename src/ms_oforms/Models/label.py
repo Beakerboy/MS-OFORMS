@@ -1,11 +1,12 @@
 import struct
+from ms_oforms.Models.control_base import ControlBase
 from typing import TypeVar
 
 
 T = TypeVar('T', bound='Label')
 
 
-class Label:
+class Label(ControlBase):
 
     LABEL_PROP_MAP = {
         0:  ("ForeColor", "<I", DataLocation.DATA_BLOCK),
@@ -26,4 +27,5 @@ class Label:
 
     def to_bytes(self: T) -> bytes:
         cb_label = 4 + len(self.data) + len(self.extended)
-        return struct.pack('<BBH', 0, 2, cb_label)
+        prop_mask = self.generate_prop_mask()
+        return struct.pack('<BBH', 0, 2, cb_label) + prop_mask
