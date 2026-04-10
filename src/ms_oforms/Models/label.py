@@ -25,6 +25,7 @@ class Label(ControlBase):
     def __init__(self: T) -> None:
         self.data = b''
         self.extended = b''
+        self.properties = {}
 
     def to_bytes(self: T) -> bytes:
         cb_label = 4 + len(self.data) + len(self.extended)
