@@ -16,4 +16,4 @@ class ControlBase(StructureBase):
     def to_bytes(self: T) -> bytes:
         text_props = TextProps()
         text_props.properties = self.properties
-        return super().to_bytes + text_props.to_bytes()
+        return super().to_bytes() + text_props.to_bytes()
