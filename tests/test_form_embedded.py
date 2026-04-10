@@ -17,11 +17,12 @@ def test_to_bytes() -> None:
     with open(path3, 'rb') as file:
         expected = file.read()
     form = FormEmbedded()
-    label = Label()
-    label.properties = {
+    label1 = Label()
+    label1.properties = {
         "Caption": b'User Name',
         "Size": b'\xca\x05\x00\x00\xa7\x01\x00\x00'
     }
-    form.objects = [label]
+    label2= Label()
+    form.objects = [label1, label2]
     
     assert form.to_bytes() == expected
