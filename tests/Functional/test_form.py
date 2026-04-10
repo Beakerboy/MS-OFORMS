@@ -21,7 +21,7 @@ def test_to_frx() -> None:
         "BitFlags": b'2\x00\x00\x00',
         "Position": b'\x00\x00\x00\x00\x00\x00\x00\x00'
     } | font_info
-    
+
     textbox1 = MorphData()
     textbox1.properties = {
         "Various": b'\x1bH\x80,',
@@ -56,11 +56,11 @@ def test_to_frx() -> None:
         "Name": b'LoginButton',
         "Position": b'\x1f\x00\x00\x00\x00\xec\x09\x00'
     } | font_info
-    
+
     form.add_control(label1)
     form.add_control(textbox1)
     form.add_control(label2)
     form.add_control(textbox2)
     form.add_control(command)
-    
+
     form.write_frx()
