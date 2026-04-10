@@ -1,6 +1,8 @@
 from ms_cfb.ole_file import OleFile
 from ms_oforms.Models.form_embedded import FormEmbedded
 from ms_oforms.Models.label import Label
+from ms_oforms.Models.morph_data import MorphData
+
 
 def test_to_bytes() -> None:
     path1 = 'tests/files/Login.frx'
@@ -22,7 +24,7 @@ def test_to_bytes() -> None:
         "Caption": b'User Name',
         "Size": b'\xca\x05\x00\x00\xa7\x01\x00\x00'
     }
-    label2= Label()
-    form.objects = [label1, label2]
+    textbox = MorphData()
+    form.objects = [label1, textbox]
     
     assert form.to_bytes() == expected
