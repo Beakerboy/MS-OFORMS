@@ -27,7 +27,7 @@ class StructureBase:
             if prop_name in self.properties and self.properties[prop_name] is not None:
                 mask |= (1 << bit)
             
-        return mask 
+        return mask
 
     def to_bytes(self: T) -> bytes:
         from ms_oforms.Models.text_props import TextProps
