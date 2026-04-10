@@ -5,6 +5,7 @@ from ms_oforms.Models.label import Label
 from ms_oforms.Models.morph_data import MorphData
 
 
+# A handful of padding bytes are incorrect
 def test_to_bytes() -> None:
     path1 = 'tests/files/Login.frx'
     path2 = 'tests/files/Login.bin'
