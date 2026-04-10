@@ -28,7 +28,7 @@ def test_to_bytes() -> None:
         "FontName": b'Tahoma',
         "FontHeight": 0xa5,
         "FontCharSet": 0x00,
-        "FontPitchAndFamily": 0x00
+        "FontPitchAndFamily": 0x02
     }
     
     textbox = MorphData()
