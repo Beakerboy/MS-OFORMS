@@ -24,7 +24,7 @@ def test_to_bytes() -> None:
         "Caption": b'User Name',
         "Size": b'\xca\x05\x00\x00\xa7\x01\x00\x00'
     }
-    label.text_props.properties = {
+    label1.text_props.properties = {
         "FontName": b'Tahoma',
         "FontHeight": 0xa5,
         "FontCharSet": 0x00,
