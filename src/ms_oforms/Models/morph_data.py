@@ -50,3 +50,6 @@ class MorphData(ControlBase):
             struct.pack('<BBHQ', 0, 2, cb_label, prop_mask) +
             data + extra
         )
+
+    def generate_prop_mask(self: T) -> int;
+        return super().def generate_prop_mask() | (1 << 31)
