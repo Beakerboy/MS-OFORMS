@@ -31,7 +31,7 @@ def test_to_bytes() -> None:
     }
     
     textbox1 = MorphData()
-    textbox2.properties = {
+    textbox1.properties = {
         "Various": b'\x1bH\x80,',
         "Size": b'\xb6\x0f\x00\x00\x7b\x02\x00\x00',
         "FontName": b'Tahoma',
