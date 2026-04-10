@@ -1,6 +1,6 @@
 from ms_cfb.ole_file import OleFile
 from ms_oforms.Models.form_embedded import FormEmbedded
-
+from ms_oforms.Models.label import Label
 
 def test_to_bytes() -> None:
     path1 = 'tests/files/Login.frx'
@@ -17,5 +17,6 @@ def test_to_bytes() -> None:
     with open(path3, 'rb') as file:
         expected = file.read()
     form = FormEmbedded()
+    form.objects = [Label()]
     
     assert form.to_bytes() == expected
