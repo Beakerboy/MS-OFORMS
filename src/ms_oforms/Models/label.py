@@ -23,14 +23,3 @@ class Label(ControlBase):
         9:  ("SpecialEffect", "<H", DataLocation.DATA_BLOCK),
         11: ("Picture", "<I", DataLocation.BOTH)
     }
-    
-    def __init__(self: T) -> None:
-        self.properties = {}
-
-    def to_bytes(self: T) -> bytes:
-        text_props = TextProps()
-        text_props.properties = self.properties
-        return (
-            super().to_bytes() +
-            text_props.to_bytes()
-        )
