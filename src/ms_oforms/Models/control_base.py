@@ -27,4 +27,7 @@ class ControlBase:
     def compress_and_pad(value: bytes) -> bytes:
         # if all the high bits are zero, remove them
         # pad to 4 byte length
-        return value + b'\x67' * min(3, 4 - (len(value) % 4))
+        pad = b''
+        if len(value) % 4 > 0:
+            pad = b'\x00' * (4 - len(value) % 4)
+        return value + pad
