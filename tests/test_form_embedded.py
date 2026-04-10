@@ -17,6 +17,11 @@ def test_to_bytes() -> None:
     with open(path3, 'rb') as file:
         expected = file.read()
     form = FormEmbedded()
+    label = Label()
+    label.properties = {
+        "Caption": b'',
+        "Size": 0
+    }
     form.objects = [Label()]
     
     assert form.to_bytes() == expected
