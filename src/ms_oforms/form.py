@@ -10,6 +10,11 @@ class Form:
     def __init__(self: T) -> None:
         self.objects: list[ControlBase] = []
 
+    def add_control(self: T, control: ControlBase) -> None:
+        control.properties["ID"] = len(self.objects) + 1
+        control.properties["TabIndex"] = len(self.objects)
+        self.objects.append([control])
+        
     def write_frx(self: T) -> None:
         # Create o-stream
         # Create f-stream
