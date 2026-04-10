@@ -7,4 +7,7 @@ T = TypeVar('T', bound='FormEmbedded')
 class FormEmbedded:
 
     def to_bytes(self: T) -> bytes:
-        return b''
+        output = b''
+        for obj in self.objects:
+            output += obj.to_bytes()
+        return output
