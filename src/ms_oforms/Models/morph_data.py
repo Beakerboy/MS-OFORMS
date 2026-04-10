@@ -9,6 +9,25 @@ T = TypeVar('T', bound='MorphData')
 
 class MorphData(ControlBase):
 
+    PROP_MAP = {
+        0:  ("Various", "<I", DataLocation.DATA_BLOCK),
+        1:  ("BackColor", "<I", DataLocation.DATA_BLOCK),
+        2:  ("ForeColor", "<I", DataLocation.DATA_BLOCK),
+        3:  ("MaxLength", "<I", DataLocation.BOTH),
+        4:  ("BorderStyle", "s", DataLocation.DATA_BLOCK),
+        5:  ("Scrollbars", "<I", DataLocation.EXTRA_BLOCK),
+        6:  ("DisplayStyle", "<H", DataLocation.DATA_BLOCK),
+        7:  ("MousePointer", "<H", DataLocation.DATA_BLOCK),
+        8:  ("Size", "<H", DataLocation.EXTRA_BLOCK),
+        9:  ("PasswordChar", "<H", DataLocation.DATA_BLOCK),
+        11: ("ListWidth", "<I", DataLocation.DATA_BLOCK)
+    }
+
+    def __init__(self: T) -> None:
+        self.properties = {
+            "Size": b'\x00\x00\x00\x00\x00\x00\x00\x00'
+        }
+
     def to_bytes(self: T) -> bytes:
         data = b''
         extra = b''
