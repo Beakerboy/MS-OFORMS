@@ -58,7 +58,7 @@ class FormControl:
         self._maj_ver = 4
         self.properties: dict[str, Any] = {}
         self.class_table: list = []
-        self.sites: tuple[bytes, dict[str, Any]]
+        self.sites: list[tuple[bytes, dict[str, Any]]]
         self.depth = b''
 
     def to_bytes(self: T) -> bytes:
