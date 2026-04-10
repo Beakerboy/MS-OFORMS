@@ -13,6 +13,7 @@ class Form:
     def add_control(self: T, control: ControlBase) -> None:
         control.properties["ID"] = len(self._objects) + 1
         control.properties["TabIndex"] = len(self._objects)
+        control.properties["ObjectStreamSize"] = len(control.to_bytes())
         self._objects.append([control])
         
     def write_frx(self: T) -> None:
