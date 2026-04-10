@@ -43,11 +43,12 @@ class ControlBase:
                             data += struct.pack(map_data[1], value)
                     elif map_data[2] == DataLocation.EXTRA_BLOCK:
                         extra += self.compress_and_pad(value)
+        data = self.pad(data)
         cb_label = 4 + len(data) + len(extra)
         prop_mask = self.generate_prop_mask()
         return (
             struct.pack('<BBHI', 0, 2, cb_label, prop_mask) +
-            self.compress_and_pad(data) + extra
+            data + extra
         )
 
     @staticmethod
@@ -57,4 +58,13 @@ class ControlBase:
         pad = b''
         if len(value) % 4 > 0:
             pad = b'\x00' * (4 - len(value) % 4)
+        return value + pad
+
+    @staticmethod
+    def pad(value: bytes, num: int = 4) -> bytes:
+        # if all the high bits are zero, remove them
+        # pad to 4 byte length
+        pad = b''
+        if len(value) % num > 0:
+            pad = b'\x00' * (num - len(value) % num)
         return value + pad
