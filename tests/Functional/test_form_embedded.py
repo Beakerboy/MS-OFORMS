@@ -67,7 +67,8 @@ def test_to_bytes() -> None:
         "FontName": b'Tahoma',
         "FontHeight": 0xa5,
         "FontCharset": 0x00,
-        "FontPitchAndFamily": 0x02
+        "FontPitchAndFamily": 0x02,
+        "ParagraphAlign": 2
     }
     
     form.objects = [label1, textbox1, label2, textbox2, command]
