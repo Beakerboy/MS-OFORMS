@@ -30,8 +30,11 @@ def test_to_bytes() -> None:
     }
     
     textbox = MorphData()
-    textbox.properties["Various"] = b'\x1bH\x80,'
-    textbox.properties["Size"] = b'\xb6\x0f\x00\x00\x7b\x02\x00\x00'
+    textbox.properties = {
+        "Various": b'\x1bH\x80,',
+        "Size": b'\xb6\x0f\x00\x00\x7b\x02\x00\x00',
+        "FontName": b'Tahoma',
+    }
     form.objects = [label1, textbox]
     
     assert form.to_bytes() == expected
