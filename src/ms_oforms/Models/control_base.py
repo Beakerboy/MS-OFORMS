@@ -1,4 +1,5 @@
 import struct
+from ms_oforms.Enums.data_location import DataLocation
 from typing import TypeVar
 
 
