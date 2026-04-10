@@ -62,6 +62,6 @@ def test_to_bytes() -> None:
     }
     command = CommandButton()
     
-    form.objects = [label1, textbox1, label2, textbox2]
+    form.objects = [label1, textbox1, label2, textbox2, command]
     
     assert form.to_bytes() == expected
