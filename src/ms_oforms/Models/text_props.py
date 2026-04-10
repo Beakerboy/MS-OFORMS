@@ -13,6 +13,6 @@ class TextProps(ControlBase):
         0:  ("FontName", "<I", DataLocation.BOTH),
         1:  ("FontEffects", "<I", DataLocation.DATA_BLOCK),
         2:  ("FontHeight", "<I", DataLocation.DATA_BLOCK),
-        4:  ("FontCharset", "<I", DataLocation.DATA_BLOCK),
-        5:  ("FontPitchAndFamily", "s", DataLocation.DATA_BLOCK),
+        4:  ("FontCharset", "<B", DataLocation.DATA_BLOCK),
+        5:  ("FontPitchAndFamily", "<B", DataLocation.DATA_BLOCK),
     }
