@@ -22,3 +22,9 @@ class ControlBase:
                 mask |= (1 << bit)
             
         return mask 
+
+    @staticmethod
+    def compress_and_pad(value: bytes) -> bytes:
+        # if all the high bits are zero, remove them
+        # pad to 4 byte length
+        return value + b'\x00' * min(3, 4 - len(value) % 4)
