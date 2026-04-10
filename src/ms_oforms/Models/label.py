@@ -36,14 +36,14 @@ class Label(ControlBase):
                     if map_data[2] == DataLocation.BOTH:
                         cba = len(value) | 0x80000000
                         data += struct.pack("<I", cba)
-                        extra += value
+                        extra += self.compress_and_pad(value)
                     elif map_data[2] == DataLocation.DATA_BLOCK:
                         if map_data[1] == "s":
                             data += value
                         else:
                             data += struct.pack(map_data[1], value)
                     elif map_data[2] == DataLocation.EXTRA_BLOCK:
-                        extra += value
+                        extra += self.compress_and_pad(value)
         cb_label = 4 + len(data) + len(extra)
         prop_mask = self.generate_prop_mask()
         return (
