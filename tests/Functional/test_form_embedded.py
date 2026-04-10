@@ -31,33 +31,33 @@ def test_to_bytes() -> None:
     label1.properties = {
         "Caption": b'User Name',
         "Size": b'\xca\x05\x00\x00\xa7\x01\x00\x00',
-    } + font_info
+    } | font_info
     
     textbox1 = MorphData()
     textbox1.properties = {
         "Various": b'\x1bH\x80,',
         "Size": b'\xb6\x0f\x00\x00\x7b\x02\x00\x00',
-    } + font_info
+    } | font_info
 
     label2 = Label()
     label2.properties = {
         "Caption": b'Password',
         "Size": b'\xf6\x04\x00\x00\xa7\x01\x00\x00',
-    } + font_info
+    } | font_info
 
     textbox2 = MorphData()
     textbox2.properties = {
         "Various": b'\x1bH\x80,',
         "Size": b'\xb6\x0f\x00\x00\x7b\x02\x00\x00',
         "PasswordChar": 0x2a,
-    } + font_info
+    } | font_info
 
     command = CommandButton()
     command.properties = {
         "Caption": b'Log In',
         "Size": b'\xb6\x0f\x00\x00O\x03\x00\x00',
         "ParagraphAlign": 3
-    } + font_info
+    } | font_info
     
     form.objects = [label1, textbox1, label2, textbox2, command]
     
