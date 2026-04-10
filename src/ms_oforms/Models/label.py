@@ -21,7 +21,7 @@ class Label(ControlBase):
         8:  ("BorderStyle", "<H", DataLocation.EXTRA_BLOCK),
         9:  ("SpecialEffect", "<H", DataLocation.DATA_BLOCK),
         11: ("Picture", "<I", DataLocation.BOTH)
-    } 
+    }
     
     def __init__(self: T) -> None:
         self.properties = {}
