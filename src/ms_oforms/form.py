@@ -15,4 +15,5 @@ class Form:
         # Create f-stream
         # Create ObjCompat
         # Create OLE
+        # Prepend 24 bytes
         pass
