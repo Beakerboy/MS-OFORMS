@@ -24,6 +24,13 @@ def test_to_bytes() -> None:
         "Caption": b'User Name',
         "Size": b'\xca\x05\x00\x00\xa7\x01\x00\x00'
     }
+    label.text_props.properties = {
+        "FontName": b'Tahoma',
+        "FontHeight": 0xa5,
+        "FontCharSet": 0x00,
+        "FontPitchAndFamily": 0x00
+    }
+    
     textbox = MorphData()
     textbox.properties["Various"] = 0xa5
     textbox.properties["ForeColor"] = 0x0200
