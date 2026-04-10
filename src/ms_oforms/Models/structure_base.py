@@ -8,6 +8,8 @@ T = TypeVar('T', bound='StructureBase')
 
 class StructureBase:
 
+    PROP_MAP: dict[int, tuple[str, str, DataLocation]]
+
     def __init__(self: T) -> None:
         self.prop_mask_size = 4
         self.properties = {}
