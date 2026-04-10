@@ -13,12 +13,9 @@ class FormControl:
 
     # All DATA_BLOCK data is for bytes.
     FORM_PROP_MAP = {
-        0:  ("Unused1",        "",   DataLocation.NONE),
         1:  ("BackColor",      "", DataLocation.DATA_BLOCK),
         2:  ("ForeColor",      "", DataLocation.DATA_BLOCK),
         3:  ("NextID",         "", DataLocation.DATA_BLOCK),
-        4:  ("Unused2",        "",  DataLocation.NONE),
-        5:  ("Unused3",        "",   DataLocation.NONE),
         6:  ("Boolean",        "", DataLocation.DATA_BLOCK),
         7:  ("Border",         "", DataLocation.DATA_BLOCK),
         8:  ("MousePointer",   "", DataLocation.DATA_BLOCK),
@@ -27,7 +24,6 @@ class FormControl:
         11: ("LogicalSize",    "<Q",   DataLocation.EXTRA_BLOCK),
         12: ("ScrollPosition", "<Q", DataLocation.EXTRA_BLOCK),
         13: ("Group",   "<I", DataLocation.STREAM_DATA),
-        14: ("Reserved",      "<H", DataLocation.DATA_BLOCK),
         15: ("MouseIcon",  "B",   DataLocation.DATA_BLOCK),
         16: ("Cycle",   "B",   DataLocation.DATA_BLOCK),
         17: ("SpecialEffect",   "B",   DataLocation.DATA_BLOCK),
