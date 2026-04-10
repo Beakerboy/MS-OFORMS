@@ -34,6 +34,9 @@ def test_to_bytes() -> None:
         "Various": b'\x1bH\x80,',
         "Size": b'\xb6\x0f\x00\x00\x7b\x02\x00\x00',
         "FontName": b'Tahoma',
+        "FontHeight": 0xa5,
+        "FontCharset": 0x00,
+        "FontPitchAndFamily": 0x02
     }
     form.objects = [label1, textbox]
     
