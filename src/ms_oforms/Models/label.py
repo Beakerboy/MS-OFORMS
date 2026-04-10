@@ -8,7 +8,7 @@ T = TypeVar('T', bound='Label')
 
 class Label(ControlBase):
 
-    LABEL_PROP_MAP = {
+    PROP_MAP = {
         0:  ("ForeColor", "<I", DataLocation.DATA_BLOCK),
         1:  ("BackColor", "<I", DataLocation.DATA_BLOCK),
         2:  ("Various", "<I", DataLocation.DATA_BLOCK),
