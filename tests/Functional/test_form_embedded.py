@@ -1,5 +1,6 @@
 from ms_cfb.ole_file import OleFile
 from ms_oforms.Models.form_embedded import FormEmbedded
+from ms_oforms.Models.command_button import CommandButton
 from ms_oforms.Models.label import Label
 from ms_oforms.Models.morph_data import MorphData
 
@@ -48,6 +49,9 @@ def test_to_bytes() -> None:
         "FontCharset": 0x00,
         "FontPitchAndFamily": 0x02
     }
-    form.objects = [label1, textbox, label2]
+
+    command = CommandButton()
+    
+    form.objects = [label1, textbox, label2, command]
     
     assert form.to_bytes() == expected
