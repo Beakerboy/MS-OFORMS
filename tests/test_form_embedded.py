@@ -20,7 +20,7 @@ def test_to_bytes() -> None:
     label = Label()
     label.properties = {
         "Caption": b'User Name',
-        "Size": 0
+        "Size": b'\x00\x00\x00\x00\x00\x00\x00\x00'
     }
     form.objects = [label]
     
