@@ -24,11 +24,25 @@ class Label(ControlBase):
     } 
     
     def __init__(self: T) -> None:
-        self.data = b''
         self.extended = b''
         self.properties = {}
 
     def to_bytes(self: T) -> bytes:
+        data = b''
+        for bit, map_data in self.PROP_MAP.items():
+                name = map_data[0]
+                if name in self.properties:
+                    if map_data[2] == DataLocation.BOTH:
+                        value = len(site[1][name]) | 0x80000000
+                        data += struct.pack("<I", value)
+                        extra += site[1][name]
+                    elif map_data[2] == DataLocation.DATA_BLOCK:
+                        if map_data[1] == "s":
+                            site_data += site[1][name]
+                        else:
+                            site_data += struct.pack(map_data[1], site[1][name])
+                    elif map_data[2] == DataLocation.EXTRA_BLOCK:
+                        site_extra += site[1][name]
         cb_label = 4 + len(self.data) + len(self.extended)
         prop_mask = self.generate_prop_mask()
         return struct.pack('<BBHI', 0, 2, cb_label, prop_mask)
