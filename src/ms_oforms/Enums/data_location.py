@@ -1,8 +1,4 @@
 from enum import Enum, auto
-from typing import TypeVar
-
-
-T = TypeVar('T', bound='FormControl')
 
 
 class DataLocation(Enum):
