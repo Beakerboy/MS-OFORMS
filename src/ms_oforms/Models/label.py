@@ -21,3 +21,5 @@ class Label(ControlBase):
         9:  ("SpecialEffect", "<H", DataLocation.DATA_BLOCK),
         11: ("Picture", "<I", DataLocation.BOTH)
     }
+
+    ClsidCacheIndex = 0x15
