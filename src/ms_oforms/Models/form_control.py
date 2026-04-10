@@ -58,7 +58,7 @@ class FormControl:
         self._maj_ver = 4
         self.properties: dict[str, Any] = {}
         self.class_table: list = []
-        self.sites: list[] = []
+        self.sites: list[dict[str, Any]] = []
 
     def to_bytes(self: T) -> bytes:
         data = self.generate_data_block()
