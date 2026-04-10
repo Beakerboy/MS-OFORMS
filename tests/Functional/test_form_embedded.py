@@ -38,6 +38,16 @@ def test_to_bytes() -> None:
         "FontCharset": 0x00,
         "FontPitchAndFamily": 0x02
     }
-    form.objects = [label1, textbox]
+
+    label2 = Label()
+    label2.properties = {
+        "Caption": b'Password',
+        "Size": b'\xca\x05\x00\x00\xa7\x01\x00\x00',
+        "FontName": b'Tahoma',
+        "FontHeight": 0xa5,
+        "FontCharset": 0x00,
+        "FontPitchAndFamily": 0x02
+    }
+    form.objects = [label1, textbox, label2]
     
     assert form.to_bytes() == expected
