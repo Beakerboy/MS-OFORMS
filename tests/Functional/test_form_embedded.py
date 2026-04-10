@@ -22,9 +22,7 @@ def test_to_bytes() -> None:
     label1 = Label()
     label1.properties = {
         "Caption": b'User Name',
-        "Size": b'\xca\x05\x00\x00\xa7\x01\x00\x00'
-    }
-    label1.text_props.properties = {
+        "Size": b'\xca\x05\x00\x00\xa7\x01\x00\x00',
         "FontName": b'Tahoma',
         "FontHeight": 0xa5,
         "FontCharset": 0x00,
