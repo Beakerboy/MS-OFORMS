@@ -30,6 +30,8 @@ class ControlBase:
         return mask 
 
     def to_bytes(self: T) -> bytes:
+        text_props = TextProps()
+        text_props.properties = self.properties
         data = b''
         extra = b''
         for bit, map_data in self.PROP_MAP.items():
@@ -53,7 +55,7 @@ class ControlBase:
         format = '<BBHI' if self.prop_mask_size == 4 else '<BBHQ'
         return (
             struct.pack(format, 0, 2, cb_label, prop_mask) +
-            data + extra
+            data + extra + text_props.to_bytes()
         )
 
     @staticmethod
