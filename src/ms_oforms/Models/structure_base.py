@@ -1,6 +1,6 @@
 import struct
 from ms_oforms.Enums.data_location import DataLocation
-from typing import TypeVar
+from typing import Any, TypeVar
 
 
 T = TypeVar('T', bound='StructureBase')
@@ -12,7 +12,7 @@ class StructureBase:
 
     def __init__(self: T) -> None:
         self.prop_mask_size = 4
-        self.properties = {}
+        self.properties: dict[str, Any] = {}
 
     def generate_prop_mask(self: T) -> int:
         """
