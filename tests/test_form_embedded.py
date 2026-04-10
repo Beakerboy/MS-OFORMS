@@ -19,7 +19,7 @@ def test_to_bytes() -> None:
     form = FormEmbedded()
     label = Label()
     label.properties = {
-        "Caption": b'User Name'
+        "Caption": b'User Name',
         "Size": 0
     }
     form.objects = [label]
