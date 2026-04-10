@@ -61,6 +61,14 @@ def test_to_bytes() -> None:
         "FontPitchAndFamily": 0x02
     }
     command = CommandButton()
+    command.properties = {
+        "Caption": b'Log In',
+        "Size": b'\xb6\x0f\x00\x00\x7b\x02\x00\x00',
+        "FontName": b'Tahoma',
+        "FontHeight": 0xa5,
+        "FontCharset": 0x00,
+        "FontPitchAndFamily": 0x02
+    }
     
     form.objects = [label1, textbox1, label2, textbox2, command]
     
