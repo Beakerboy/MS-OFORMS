@@ -23,9 +23,9 @@ class StructureBase:
         for bit, map_data in self.PROP_MAP.items():
             # Get the property name from the map (usually the first element)
             prop_name = map_data[0]
-        
+
             # If the property exists in the dict and is not None, set the bit
-            if prop_name in self.properties and self.properties[prop_name] is not None:
+            if prop_name in self.properties:
                 mask |= (1 << bit)
         return mask
 
