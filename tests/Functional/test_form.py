@@ -75,7 +75,7 @@ def test_to_bytes() -> None:
     command.properties = {
         "Caption": b'Log In',
         "Size": b'\xb6\x0f\x00\x00O\x03\x00\x00',
-        "ParagraphAlign": 3
+        "ParagraphAlign": 3,
         "Name": b'LoginButton',
         "ObjectStreamSize": 0x38,
         "ClsidCacheIndex": 0x11,
