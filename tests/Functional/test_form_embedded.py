@@ -27,6 +27,8 @@ def test_to_bytes() -> None:
     textbox = MorphData()
     textbox.properties["Various"] = 0x01
     textbox.properties["ForeColor"] = 0x01
+    textbox.properties["BorderStyle"] = 0x01
+    textbox.properties["Scrollbars"] = 0x01
     form.objects = [label1, textbox]
     
     assert form.to_bytes() == expected
