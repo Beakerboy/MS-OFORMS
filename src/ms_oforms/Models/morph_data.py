@@ -24,9 +24,7 @@ class MorphData(ControlBase):
     }
 
     def __init__(self: T) -> None:
-        self.properties = {
-            "Size": b'\x00\x00\x00\x00\x00\x00\x00\x00'
-        }
+        self.properties = {}
 
     def to_bytes(self: T) -> bytes:
         data = b''
