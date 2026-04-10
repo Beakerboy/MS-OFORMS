@@ -14,7 +14,8 @@ class StructureBase:
 
     def generate_prop_mask(self: T) -> int:
         """
-        Recreates a 4-byte PropMask bitfield based on a dictionary of properties.
+        Recreates a 4-byte PropMask bitfield based on a dictionary of
+        properties.
         """
         mask = 0
 
