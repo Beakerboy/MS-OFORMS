@@ -22,6 +22,7 @@ class Label(ControlBase):
         9:  ("SpecialEffect", "<H", DataLocation.DATA_BLOCK),
         11: ("Picture", "<I", DataLocation.BOTH)
     } 
+    
     def __init__(self: T) -> None:
         self.data = b''
         self.extended = b''
