@@ -1,6 +1,5 @@
 import struct
 from ms_oforms.Enums.data_location import DataLocation
-from ms_oforms.Models.text_props import TextProps
 from typing import TypeVar
 
 
@@ -31,6 +30,7 @@ class ControlBase:
         return mask 
 
     def to_bytes(self: T) -> bytes:
+        from ms_oforms.Models.text_props import TextProps
         text_props = TextProps()
         text_props.properties = self.properties
         data = b''
