@@ -51,5 +51,5 @@ class MorphData(ControlBase):
             data + extra
         )
 
-    def generate_prop_mask(self: T) -> int;
+    def generate_prop_mask(self: T) -> int:
         return super().def generate_prop_mask() | (1 << 31)
