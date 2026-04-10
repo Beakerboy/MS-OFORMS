@@ -10,7 +10,7 @@ T = TypeVar('T', bound='MorphData')
 class MorphData(ControlBase):
 
     PROP_MAP = {
-        0:  ("Various", "<I", DataLocation.DATA_BLOCK),
+        0:  ("Various", "s", DataLocation.DATA_BLOCK),
         1:  ("BackColor", "<I", DataLocation.DATA_BLOCK),
         2:  ("ForeColor", "<I", DataLocation.DATA_BLOCK),
         3:  ("MaxLength", "<I", DataLocation.DATA_BLOCK),
