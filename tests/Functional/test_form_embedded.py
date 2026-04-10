@@ -32,7 +32,7 @@ def test_to_bytes() -> None:
     }
     
     textbox = MorphData()
-    textbox.properties["Various"] = 0xa5
+    textbox.properties["Various"] = b'\x1bH\x80,'
     textbox.properties["Size"] = b'\x00\x01\x02\x03\x04\x05\x06\c07'
     form.objects = [label1, textbox]
     
