@@ -22,6 +22,6 @@ def test_to_bytes() -> None:
         "Caption": b'',
         "Size": 0
     }
-    form.objects = [Label()]
+    form.objects = [label]
     
     assert form.to_bytes() == expected
