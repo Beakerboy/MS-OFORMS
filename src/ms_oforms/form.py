@@ -16,7 +16,7 @@ class Form:
         control.properties["ObjectStreamSize"] = len(control.to_bytes())
         control.properties["ClsidCacheIndex"] = control.ClsidCacheIndex
         self._objects.append([control])
-        
+
     def write_frx(self: T) -> None:
         # Create o-stream
         # Create f-stream
