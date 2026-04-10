@@ -21,3 +21,5 @@ class CommandButton(ControlBase):
         9:  ("TakeFocusOnClick", "<H", DataLocation.DATA_BLOCK),
         10: ("MouseIcon", "<I", DataLocation.BOTH)
     }
+
+    ClsidCacheIndex = 0x11
