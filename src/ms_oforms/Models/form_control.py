@@ -59,6 +59,7 @@ class FormControl:
         self.properties: dict[str, Any] = {}
         self.class_table: list = []
         self.sites: list[dict[str, Any]] = []
+        self.depth = b''
 
     def to_bytes(self: T) -> bytes:
         data = self.generate_data_block()
