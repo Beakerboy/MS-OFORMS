@@ -33,7 +33,6 @@ def test_to_bytes() -> None:
         "Size": b'\xca\x05\x00\x00\xa7\x01\x00\x00',
         "Name": b'Label1',
         "BitFlags": b'2\x00\x00\x00',
-        "TabIndex": 0,
         "Position": b'\x00\x00\x00\x00\x00\x00\x00\x00'
     } | font_info
     
