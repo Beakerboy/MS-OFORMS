@@ -33,9 +33,7 @@ def test_to_bytes() -> None:
         "Size": b'\xca\x05\x00\x00\xa7\x01\x00\x00',
         "Name": b'Label1',
         "BitFlags": b'2\x00\x00\x00',
-        "ObjectStreamSize": 0x3c,
         "TabIndex": 0,
-        "ClsidCacheIndex": 0x15,
         "Position": b'\x00\x00\x00\x00\x00\x00\x00\x00'
     } | font_info
     
@@ -44,8 +42,6 @@ def test_to_bytes() -> None:
         "Various": b'\x1bH\x80,',
         "Size": b'\xb6\x0f\x00\x00\x7b\x02\x00\x00',
         "Name": b'Username',
-        "ObjectStreamSize": 0x34,
-        "ClsidCacheIndex": 0x17,
         "Position": b'\x00\x00\x00\x00\xa7\x01\x00\x00'
     } | font_info
 
@@ -55,8 +51,6 @@ def test_to_bytes() -> None:
         "Size": b'\xf6\x04\x00\x00\xa7\x01\x00\x00',
         "Name": b'Label2',
         "BitFlags": b'2\x00\x00\x00',
-        "ObjectStreamSize": 0x38,
-        "ClsidCacheIndex": 0x15,
         "Position": b'\x00\x00\x00\x00\x00\x00\xf6\x04'
     } | font_info
 
@@ -66,8 +60,6 @@ def test_to_bytes() -> None:
         "Size": b'\xb6\x0f\x00\x00\x7b\x02\x00\x00',
         "PasswordChar": 0x2a,
         "Name": b'Password',
-        "ObjectStreamSize": 0x38,
-        "ClsidCacheIndex": 0x17,
         "Position": b'\x00\x00\x00\x00\x9d\x06\x00\x00'
     } | font_info
 
@@ -77,8 +69,6 @@ def test_to_bytes() -> None:
         "Size": b'\xb6\x0f\x00\x00O\x03\x00\x00',
         "ParagraphAlign": 3,
         "Name": b'LoginButton',
-        "ObjectStreamSize": 0x38,
-        "ClsidCacheIndex": 0x11,
         "Position": b'\x1f\x00\x00\x00\x00\xec\x09\x00'
     } | font_info
     
