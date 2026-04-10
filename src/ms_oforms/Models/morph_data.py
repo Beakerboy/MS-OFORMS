@@ -24,31 +24,16 @@ class MorphData(ControlBase):
     }
 
     def __init__(self: T) -> None:
+        super().__init()__
+        self.prop_mask_size = 8
         self.properties = {}
 
     def to_bytes(self: T) -> bytes:
-        data = b''
-        extra = b''
-        for bit, map_data in self.PROP_MAP.items():
-                name = map_data[0]
-                if name in self.properties:
-                    value = self.properties[name]
-                    if map_data[2] == DataLocation.BOTH:
-                        cba = len(value) | 0x80000000
-                        data += struct.pack("<I", cba)
-                        extra += self.compress_and_pad(value)
-                    elif map_data[2] == DataLocation.DATA_BLOCK:
-                        if map_data[1] == "s":
-                            data += value
-                        else:
-                            data += struct.pack(map_data[1], value)
-                    elif map_data[2] == DataLocation.EXTRA_BLOCK:
-                        extra += self.compress_and_pad(value)
-        cb_label = 8 + len(data) + len(extra)
-        prop_mask = self.generate_prop_mask()
+        text_props = TextProps()
+        text_props.properties = self.properties
         return (
-            struct.pack('<BBHQ', 0, 2, cb_label, prop_mask) +
-            data + extra
+            super().to_bytes() +
+            text_props.to_bytes()
         )
 
     def generate_prop_mask(self: T) -> int:
