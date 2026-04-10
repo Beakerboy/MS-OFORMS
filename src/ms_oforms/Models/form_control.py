@@ -134,7 +134,8 @@ class FormControl:
                         if map_data[1] == "s":
                             site_data += site[1][name]
                         else:
-                            site_data += struct.pack(map_data[1], site[1][name])
+                            site_data += struct.pack(map_data[1],
+                                                     site[1][name])
                     elif map_data[2] == DataLocation.EXTRA_BLOCK:
                         site_extra += site[1][name]
             if len(site_extra) % 4 != 0:
@@ -155,16 +156,17 @@ class FormControl:
 
     def generate_prop_mask(self: T) -> int:
         """
-        Recreates a 4-byte PropMask bitfield based on a dictionary of properties.
+        Recreates a 4-byte PropMask bitfield based on a dictionary of
+        properties.
         """
         mask = 0
-    
+
         # Iterate through the known mapping for this object type
         for bit, map_data in self.FORM_PROP_MAP.items():
             # Get the property name from the map (usually the first element)
-            prop_name = map_data[0] if isinstance(map_data, tuple) else map_data
-        
+            prop_name = map_data[0]
+
             # If the property exists in the dict and is not None, set the bit
-            if prop_name in self.properties and self.properties[prop_name] is not None:
+            if prop_name in self.properties:
                 mask |= (1 << bit)
         return mask
