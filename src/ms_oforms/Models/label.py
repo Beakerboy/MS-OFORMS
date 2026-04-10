@@ -26,10 +26,11 @@ class Label(ControlBase):
     
     def __init__(self: T) -> None:
         self.properties = {}
-        self.text_props = TextProps()
 
     def to_bytes(self: T) -> bytes:
+        text_props = TextProps()
+        text_props.properties = self.properties
         return (
             super().to_bytes() +
-            self.text_props.to_bytes()
+            text_props.to_bytes()
         )
