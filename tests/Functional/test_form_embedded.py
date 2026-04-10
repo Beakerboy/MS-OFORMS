@@ -20,56 +20,44 @@ def test_to_bytes() -> None:
     with open(path3, 'rb') as file:
         expected = file.read()
     form = FormEmbedded()
-    label1 = Label()
-    label1.properties = {
-        "Caption": b'User Name',
-        "Size": b'\xca\x05\x00\x00\xa7\x01\x00\x00',
-        "FontName": b'Tahoma',
-        "FontHeight": 0xa5,
-        "FontCharset": 0x00,
-        "FontPitchAndFamily": 0x02
-    }
-    
-    textbox1 = MorphData()
-    textbox1.properties = {
-        "Various": b'\x1bH\x80,',
-        "Size": b'\xb6\x0f\x00\x00\x7b\x02\x00\x00',
+    font_info = {
         "FontName": b'Tahoma',
         "FontHeight": 0xa5,
         "FontCharset": 0x00,
         "FontPitchAndFamily": 0x02
     }
 
+    label1 = Label()
+    label1.properties = {
+        "Caption": b'User Name',
+        "Size": b'\xca\x05\x00\x00\xa7\x01\x00\x00',
+    } + font_info
+    
+    textbox1 = MorphData()
+    textbox1.properties = {
+        "Various": b'\x1bH\x80,',
+        "Size": b'\xb6\x0f\x00\x00\x7b\x02\x00\x00',
+    } + font_info
+
     label2 = Label()
     label2.properties = {
         "Caption": b'Password',
         "Size": b'\xf6\x04\x00\x00\xa7\x01\x00\x00',
-        "FontName": b'Tahoma',
-        "FontHeight": 0xa5,
-        "FontCharset": 0x00,
-        "FontPitchAndFamily": 0x02
-    }
+    } + font_info
 
     textbox2 = MorphData()
     textbox2.properties = {
         "Various": b'\x1bH\x80,',
         "Size": b'\xb6\x0f\x00\x00\x7b\x02\x00\x00',
         "PasswordChar": 0x2a,
-        "FontName": b'Tahoma',
-        "FontHeight": 0xa5,
-        "FontCharset": 0x00,
-        "FontPitchAndFamily": 0x02
-    }
+    } + font_info
+
     command = CommandButton()
     command.properties = {
         "Caption": b'Log In',
         "Size": b'\xb6\x0f\x00\x00O\x03\x00\x00',
-        "FontName": b'Tahoma',
-        "FontHeight": 0xa5,
-        "FontCharset": 0x00,
-        "FontPitchAndFamily": 0x02,
         "ParagraphAlign": 3
-    }
+    } + font_info
     
     form.objects = [label1, textbox1, label2, textbox2, command]
     
