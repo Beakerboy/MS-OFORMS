@@ -123,7 +123,7 @@ class FormControl:
             site_data = b''
             site_extra = b''
             for bit, map_data in self.SITE_PROP_MAP.items():
-                name = map_data[0]
+                name: str = map_data[0]
                 if name in site[1]:
                     if map_data[2] == DataLocation.BOTH:
                         if len(site_data) % 4 != 0:
