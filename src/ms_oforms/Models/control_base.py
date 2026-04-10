@@ -11,6 +11,8 @@ class ControlBase(StructureBase):
     A Control is a Structure with TextProps
     """
 
+    ClsidCacheIndex = 0x7fff
+
     def to_bytes(self: T) -> bytes:
         text_props = TextProps()
         text_props.properties = self.properties
