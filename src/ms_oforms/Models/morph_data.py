@@ -1,4 +1,3 @@
-import struct
 from ms_oforms.Models.control_base import ControlBase
 from ms_oforms.Enums.data_location import DataLocation
 from typing import TypeVar
@@ -26,14 +25,6 @@ class MorphData(ControlBase):
     def __init__(self: T) -> None:
         super().__init__()
         self.prop_mask_size = 8
-
-    def to_bytes(self: T) -> bytes:
-        text_props = TextProps()
-        text_props.properties = self.properties
-        return (
-            super().to_bytes() +
-            text_props.to_bytes()
-        )
 
     def generate_prop_mask(self: T) -> int:
         return super().generate_prop_mask() | (1 << 31)
