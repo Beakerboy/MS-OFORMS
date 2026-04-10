@@ -50,7 +50,7 @@ class ControlBase:
         data = self.pad(data)
         cb_label = self.prop_mask_size + len(data) + len(extra)
         prop_mask = self.generate_prop_mask()
-        format = '<BBHI' if self.prop_mask_size = 4 else '<BBHQ'
+        format = '<BBHI' if self.prop_mask_size == 4 else '<BBHQ'
         return (
             struct.pack(format, 0, 2, cb_label, prop_mask) +
             data + extra
