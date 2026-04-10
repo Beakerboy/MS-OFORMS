@@ -71,7 +71,7 @@ def test_to_bytes() -> None:
         "Position": b'\x1f\x00\x00\x00\x00\xec\x09\x00'
     } | font_info
     
-    form.add_control(label1))
+    form.add_control(label1)
     form.add_control(textbox1)
     form.add_control(label2)
     form.add_control(textbox2)
