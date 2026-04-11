@@ -1,5 +1,4 @@
 import struct
-from ms_oforms.form import Form
 from ms_oforms.Enums.data_location import DataLocation
 from ms_oforms.Views.view_base import ViewBase
 from typing import Any, TypeVar
@@ -41,10 +40,10 @@ class FormStreamSerializer(ViewBase):
         27: ("DrawBuffer", "", DataLocation.DATA_BLOCK)
     }
 
-    def __init__(self: T, form: Form) -> None:
+    def __init__(self: T, properties: dict[str, Any]) -> None:
         self._min_ver = 0
         self._maj_ver = 4
-        self.properties = form.properties
+        self.properties = properties
         self.class_table: list = []
         self.sites: list[tuple[bytes, dict[str, Any]]]
         self.depth = b''
