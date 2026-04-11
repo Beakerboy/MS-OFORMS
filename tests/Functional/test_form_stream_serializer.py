@@ -14,7 +14,7 @@ def test_generate_flags() -> None:
 
 
 def test_generate_data() -> None:
-    form = FormControl()
+    form = FormStreamSerializer()
     form.properties["NextID"] = 5
     form.properties["Display"] = 0x0d3b00000fd0
     form.properties["LogicalSize"] = 0
@@ -25,7 +25,7 @@ def test_generate_data() -> None:
 
 
 def test_generate_extra() -> None:
-    form = FormControl()
+    form = FormStreamSerializer()
     form.properties["NextID"] = 5
     form.properties["Display"] = 0x0d3b00000fd0
     form.properties["LogicalSize"] = 0
@@ -49,7 +49,7 @@ def test_to_bytes() -> None:
         olefile.extract_stream('f', 'tests/files')
     with open(path3, 'rb') as file:
         expected = file.read()
-    form = FormControl()
+    form = FormStreamSerializer()
     form.properties["NextID"] = 5
     form.properties["Display"] = 0x0d3b00000fd0
     form.properties["LogicalSize"] = 0
