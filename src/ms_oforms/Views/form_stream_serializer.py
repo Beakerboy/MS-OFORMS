@@ -18,7 +18,7 @@ class FormStreamSerializer(ViewBase):
         1:  ("BackColor",      "", DataLocation.DATA_BLOCK),
         2:  ("ForeColor",      "", DataLocation.DATA_BLOCK),
         3:  ("NextID",         "", DataLocation.DATA_BLOCK),
-        6:  ("Boolean",        "", DataLocation.DATA_BLOCK),
+        6:  ("BooleanProperties", "", DataLocation.DATA_BLOCK),
         7:  ("Border",         "", DataLocation.DATA_BLOCK),
         8:  ("MousePointer",   "", DataLocation.DATA_BLOCK),
         9:  ("ScrollBars",     "", DataLocation.DATA_BLOCK),
@@ -44,7 +44,7 @@ class FormStreamSerializer(ViewBase):
     def __init__(self: T, form: Form) -> None:
         self._min_ver = 0
         self._maj_ver = 4
-        self.properties: dict[str, Any] = {}
+        self.properties = form.properties
         self.class_table: list = []
         self.sites: list[tuple[bytes, dict[str, Any]]]
         self.depth = b''
