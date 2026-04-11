@@ -106,11 +106,23 @@ class FormStreamSerializer(ViewBase):
 
     def generate_site_data(self: T) -> bytes:
         output = struct.pack('<H', len(self.class_table))
-        
+        site_records = b''
         for site in self.sites:
             ole = OleSite()
             ole.properties = site
-            output += ole.to_bytes()
+            site_records += ole.to_bytes()
+
+        depth = self.depth
+        pad_size = min(4 - len(depth) % 4, 3)
+        padded_depth = depth + b't' * pad_size
+        count_of_bytes = len(padded_depth) + len(site_records)
+        for item in self.class_table:
+            output += item
+        output += struct.pack('<II', len(self.sites), count_of_bytes)
+        output += padded_depth + site_records
+        return output
+        
+        
         return output
 
     def generate_prop_mask(self: T) -> int:
