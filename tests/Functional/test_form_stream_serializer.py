@@ -111,8 +111,9 @@ def test_to_bytes() -> None:
         "ClsidCacheIndex": 0x11,
         "Position": b'\x1f\x00\x00\x00\x00\xec\x09\x00'
     }
-    serializer.sites = [site1_data, site2_data, site3_data,
-        site4_data, site5_data]
+    serializer.sites = [
+        site1_data, site2_data, site3_data,
+        site4_data, site5_data
     ]
     serializer.depth = b'\x00\x85\x01'  # 5 consecutive ssites with type 1 depth 0
     assert serializer.to_bytes() == expected
