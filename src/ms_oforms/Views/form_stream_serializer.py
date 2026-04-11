@@ -7,7 +7,7 @@ from typing import Any, TypeVar
 T = TypeVar('T', bound='FormControl')
 
 
-class FormStream:
+class FormStreamSerializer:
     """
     2.2.10.1 FormControl
     """
