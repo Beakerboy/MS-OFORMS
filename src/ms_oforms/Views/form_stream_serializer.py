@@ -1,5 +1,6 @@
 import struct
 from ms_oforms.Enums.data_location import DataLocation
+from ms_oforms.Models.ole_site import OleSite
 from ms_oforms.Views.view_base import ViewBase
 from typing import Any, TypeVar
 
