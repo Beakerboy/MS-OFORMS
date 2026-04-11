@@ -21,3 +21,7 @@ class OleSite(StructureBase):
         9:  ("GroupId", "<H", DataLocation.DATA_BLOCK),
         11: ("ControlTipText", "<I", DataLocation.BOTH)
     }
+
+    def __init__(self: T) -> None:
+        super().__init__()
+        self._maj_ver = 0
