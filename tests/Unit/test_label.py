@@ -10,7 +10,8 @@ def test_compress() -> None:
 
 def test_mask() -> None:
     expected = b'\xf5\x01\x00\x00'
-    label_data = {
+    label = Label()
+    label.properties = {
         "Name": b'Label1',
         "ID": 1,
         "BitFlags": b'2\x00\x00\x00',
@@ -19,4 +20,4 @@ def test_mask() -> None:
         "ClsidCacheIndex": 0x15,
         "Position": b'\x00\x00\x00\x00\x00\x00\x00\x00'
     }
-    assert Label.generate_mask() == expected
+    assert label.generate_prop_mask() == expected
