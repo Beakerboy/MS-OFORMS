@@ -106,41 +106,11 @@ class FormStreamSerializer(ViewBase):
 
     def generate_site_data(self: T) -> bytes:
         output = struct.pack('<H', len(self.class_table))
-        site_records = b''
+        
         for site in self.sites:
-            site_data = b''
-            site_extra = b''
-            for bit, map_data in self.SITE_PROP_MAP.items():
-                name: str = map_data[0]
-                if name in site[1]:
-                    if map_data[2] == DataLocation.BOTH:
-                        if len(site_data) % 4 != 0:
-                            site_data += b'\x00\x00'
-                        value = len(site[1][name]) | 0x80000000
-                        site_data += struct.pack("<I", value)
-                        site_extra += site[1][name]
-                    elif map_data[2] == DataLocation.DATA_BLOCK:
-                        if map_data[1] == "s":
-                            site_data += site[1][name]
-                        else:
-                            site_data += struct.pack(map_data[1],
-                                                     site[1][name])
-                    elif map_data[2] == DataLocation.EXTRA_BLOCK:
-                        site_extra += site[1][name]
-            if len(site_extra) % 4 != 0:
-                site_extra += b'\x00' * min(3, 4 - len(site_extra) % 4)
-            site_records += (
-                struct.pack('<HH', 0, 4 + len(site_data) + len(site_extra)) +
-                site[0] + site_data + site_extra
-            )
-        depth = self.depth
-        pad_size = min(4 - len(depth) % 4, 3)
-        padded_depth = depth + b't' * pad_size
-        count_of_bytes = len(padded_depth) + len(site_records)
-        for item in self.class_table:
-            output += item
-        output += struct.pack('<II', len(self.sites), count_of_bytes)
-        output += padded_depth + site_records
+            ole = OleSite()
+            ole.properties = site
+            output += ole.to_bytes()
         return output
 
     def generate_prop_mask(self: T) -> int:
