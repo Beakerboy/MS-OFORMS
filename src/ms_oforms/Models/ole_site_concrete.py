@@ -8,7 +8,7 @@ T = TypeVar('T', bound='OleSite')
 
 class OleSite(StructureBase):
 
-    SITE_PROP_MAP = {
+    PROP_MAP = {
         0:  ("Name", "<I", DataLocation.BOTH),
         1:  ("TagData", "<I", DataLocation.BOTH),
         2:  ("ID", "<I", DataLocation.DATA_BLOCK),
