@@ -1,14 +1,21 @@
 import os
+from ms_oforms.form import Form
+from ms_oforms.Views import ViewBase
+from typing import TypeVar
+
+
+T = TypeVar('T', bound='ExportController')
+
 
 class ExportController:
     """
     The Controller: Orchestrates the flow between Model and View.
     """
-    def __init__(self, model: Form, view: ViewBase):
+    def __init__(self: T, model: Form, view: ViewBase) -> None:
         self.model = model
         self.view = view
 
-    def execute_export(self, output_path: str):
+    def execute_export(self: T, output_path: str) -> None:
         """Coordinates the export process."""
         print(f"Validating {self.model.name} for MS-OFORMS specs...")
         
