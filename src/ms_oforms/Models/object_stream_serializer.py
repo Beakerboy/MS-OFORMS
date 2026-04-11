@@ -2,10 +2,10 @@ from typing import TypeVar
 from ms_oforms.Models.control_base import ControlBase
 
 
-T = TypeVar('T', bound='FormEmbedded')
+T = TypeVar('T', bound='ObjectStreamSerializer')
 
 
-class FormEmbedded:
+class ObjectStreamSerializer:
 
     def __init__(self: T) -> None:
         self.objects: list[ControlBase] = []
