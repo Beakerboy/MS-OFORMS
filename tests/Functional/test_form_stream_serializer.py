@@ -111,10 +111,10 @@ def test_to_bytes() -> None:
         "ClsidCacheIndex": 0x11,
         "Position": b'\x1f\x00\x00\x00\x00\xec\x09\x00'
     }
-    form.sites = [
+    serializer.sites = [
         (site1_mask, site1_data), (site2_mask, site2_data),
         (site3_mask, site3_data),
         (site4_mask, site4_data), (site5_mask, site5_data)
     ]
-    form.depth = b'\x00\x85\x01'  # 5 consecutive ssites with type 1 depth 0
+    serial.depth = b'\x00\x85\x01'  # 5 consecutive ssites with type 1 depth 0
     assert form.to_bytes() == expected
