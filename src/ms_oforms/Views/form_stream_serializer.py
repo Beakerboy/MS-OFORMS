@@ -4,7 +4,7 @@ from ms_oforms.Enums.data_location import DataLocation
 from typing import Any, TypeVar
 
 
-T = TypeVar('T', bound='FormControl')
+T = TypeVar('T', bound='FormStreamSerializer')
 
 
 class FormStreamSerializer:
