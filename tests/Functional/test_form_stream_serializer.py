@@ -1,9 +1,9 @@
 from ms_cfb.ole_file import OleFile
-from ms_oforms.Models.form_control import FormControl
+from ms_oforms.Views.form_stream_serializer import FormStreamSerializer
 
 
 def test_generate_flags() -> None:
-    form = FormControl()
+    form = FormStreamSerializer()
     form.properties["NextID"] = 5
     form.properties["Display"] = 0x0d3b00000fd0
     form.properties["LogicalSize"] = 0
