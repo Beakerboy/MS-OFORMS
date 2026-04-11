@@ -1,13 +1,14 @@
 import struct
 from ms_oforms.form import Form
 from ms_oforms.Enums.data_location import DataLocation
+from ms_oforms.Views.view_base import ViewBase
 from typing import Any, TypeVar
 
 
 T = TypeVar('T', bound='FormStreamSerializer')
 
 
-class FormStreamSerializer:
+class FormStreamSerializer(ViewBase):
     """
     2.2.10.1 FormControl
     """
