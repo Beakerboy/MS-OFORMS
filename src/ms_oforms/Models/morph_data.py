@@ -28,5 +28,11 @@ class MorphData(ControlBase):
         super().__init__()
         self.prop_mask_size = 8
 
+        # List Box and Combo Box data
+        self._rgColumnInfo = b''
+
     def generate_prop_mask(self: T) -> int:
         return super().generate_prop_mask() | (1 << 31)
+
+    def to_bytes(self: T) -> bytes:
+        return super().to_bytes() + self._rgColumnInfo
