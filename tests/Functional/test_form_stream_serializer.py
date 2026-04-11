@@ -55,12 +55,15 @@ def test_to_bytes() -> None:
         olefile.extract_stream('f', 'tests/files')
     with open(path3, 'rb') as file:
         expected = file.read()
-    form = FormStreamSerializer()
-    form.properties["NextID"] = 5
-    form.properties["Display"] = 0x0d3b00000fd0
-    form.properties["LogicalSize"] = 0
-    form.properties["ShapeCookie"] = 8
-    form.properties["DrawBuffer"] = 0x7d00
+    
+    properties = {
+        "NextID": 5,
+        "Display": 0x0d3b00000fd0,
+        "LogicalSize": 0,
+        "ShapeCookie": 8,
+        "DrawBuffer": 0x7d00
+    }
+    serializer = FormStreamSerializer(properties)
     site1_mask = b'\xf5\x01\x00\x00'
     site1_data = {
         "Name": b'Label1',
