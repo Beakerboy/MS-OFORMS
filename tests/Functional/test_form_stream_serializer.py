@@ -91,7 +91,7 @@ def test_to_bytes() -> None:
         "ObjectStreamSize": 0x38,
         "TabIndex": 2,
         "ClsidCacheIndex": 0x15,
-        "Position": b'\x00\x00\x00\x00\x00\x00\xf6\x04'
+        "Position": b'\x00\x00\x00\x00\xf6\x04\x00\x00'
     }
     site4_mask = b'\xe5\x01\x00\x00'
     site4_data = {
