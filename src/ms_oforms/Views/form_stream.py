@@ -1,4 +1,5 @@
 import struct
+from ms_oforms.form import Form
 from ms_oforms.Enums.data_location import DataLocation
 from typing import Any, TypeVar
 
@@ -6,7 +7,7 @@ from typing import Any, TypeVar
 T = TypeVar('T', bound='FormControl')
 
 
-class FormControl:
+class FormStream:
     """
     2.2.10.1 FormControl
     """
@@ -39,21 +40,7 @@ class FormControl:
         27: ("DrawBuffer", "", DataLocation.DATA_BLOCK)
     }
 
-    SITE_PROP_MAP = {
-        0:  ("Name", "<I", DataLocation.BOTH),
-        1:  ("TagData", "<I", DataLocation.BOTH),
-        2:  ("ID", "<I", DataLocation.DATA_BLOCK),
-        3:  ("HelpContextId", "<I", DataLocation.DATA_BLOCK),
-        4:  ("BitFlags", "s", DataLocation.DATA_BLOCK),
-        5:  ("ObjectStreamSize", "<I", DataLocation.DATA_BLOCK),
-        6:  ("TabIndex", "<H", DataLocation.DATA_BLOCK),
-        7:  ("ClsidCacheIndex", "<H", DataLocation.DATA_BLOCK),
-        8:  ("Position", "<H", DataLocation.EXTRA_BLOCK),
-        9:  ("GroupId", "<H", DataLocation.DATA_BLOCK),
-        11: ("ControlTipText", "<I", DataLocation.BOTH)
-    }
-
-    def __init__(self: T) -> None:
+    def __init__(self: T, form: Form) -> None:
         self._min_ver = 0
         self._maj_ver = 4
         self.properties: dict[str, Any] = {}
