@@ -12,6 +12,7 @@ class StructureBase:
 
     def __init__(self: T) -> None:
         self.prop_mask_size = 4
+        self._maj_ver = 2
         self.properties: dict[str, Any] = {}
 
     def generate_prop_mask(self: T) -> int:
@@ -57,7 +58,7 @@ class StructureBase:
         prop_mask = self.generate_prop_mask()
         format = '<BBHI' if self.prop_mask_size == 4 else '<BBHQ'
         return (
-            struct.pack(format, 0, 2, cb_label, prop_mask) +
+            struct.pack(format, 0, self._maj_ver, cb_label, prop_mask) +
             data + extra
         )
 
