@@ -1,12 +1,14 @@
 import struct
 from ms_oforms.Enums.data_location import DataLocation
+from ms_oforms.Models.ole_site import OleSite
+from ms_oforms.Views.view_base import ViewBase
 from typing import Any, TypeVar
 
 
-T = TypeVar('T', bound='FormControl')
+T = TypeVar('T', bound='FormStreamSerializer')
 
 
-class FormControl:
+class FormStreamSerializer(ViewBase):
     """
     2.2.10.1 FormControl
     """
@@ -16,7 +18,7 @@ class FormControl:
         1:  ("BackColor",      "", DataLocation.DATA_BLOCK),
         2:  ("ForeColor",      "", DataLocation.DATA_BLOCK),
         3:  ("NextID",         "", DataLocation.DATA_BLOCK),
-        6:  ("Boolean",        "", DataLocation.DATA_BLOCK),
+        6:  ("BooleanProperties", "", DataLocation.DATA_BLOCK),
         7:  ("Border",         "", DataLocation.DATA_BLOCK),
         8:  ("MousePointer",   "", DataLocation.DATA_BLOCK),
         9:  ("ScrollBars",     "", DataLocation.DATA_BLOCK),
@@ -39,24 +41,10 @@ class FormControl:
         27: ("DrawBuffer", "", DataLocation.DATA_BLOCK)
     }
 
-    SITE_PROP_MAP = {
-        0:  ("Name", "<I", DataLocation.BOTH),
-        1:  ("TagData", "<I", DataLocation.BOTH),
-        2:  ("ID", "<I", DataLocation.DATA_BLOCK),
-        3:  ("HelpContextId", "<I", DataLocation.DATA_BLOCK),
-        4:  ("BitFlags", "s", DataLocation.DATA_BLOCK),
-        5:  ("ObjectStreamSize", "<I", DataLocation.DATA_BLOCK),
-        6:  ("TabIndex", "<H", DataLocation.DATA_BLOCK),
-        7:  ("ClsidCacheIndex", "<H", DataLocation.DATA_BLOCK),
-        8:  ("Position", "<H", DataLocation.EXTRA_BLOCK),
-        9:  ("GroupId", "<H", DataLocation.DATA_BLOCK),
-        11: ("ControlTipText", "<I", DataLocation.BOTH)
-    }
-
-    def __init__(self: T) -> None:
+    def __init__(self: T, properties: dict[str, Any]) -> None:
         self._min_ver = 0
         self._maj_ver = 4
-        self.properties: dict[str, Any] = {}
+        self.properties = properties
         self.class_table: list = []
         self.sites: list[tuple[bytes, dict[str, Any]]]
         self.depth = b''
@@ -120,31 +108,10 @@ class FormControl:
         output = struct.pack('<H', len(self.class_table))
         site_records = b''
         for site in self.sites:
-            site_data = b''
-            site_extra = b''
-            for bit, map_data in self.SITE_PROP_MAP.items():
-                name: str = map_data[0]
-                if name in site[1]:
-                    if map_data[2] == DataLocation.BOTH:
-                        if len(site_data) % 4 != 0:
-                            site_data += b'\x00\x00'
-                        value = len(site[1][name]) | 0x80000000
-                        site_data += struct.pack("<I", value)
-                        site_extra += site[1][name]
-                    elif map_data[2] == DataLocation.DATA_BLOCK:
-                        if map_data[1] == "s":
-                            site_data += site[1][name]
-                        else:
-                            site_data += struct.pack(map_data[1],
-                                                     site[1][name])
-                    elif map_data[2] == DataLocation.EXTRA_BLOCK:
-                        site_extra += site[1][name]
-            if len(site_extra) % 4 != 0:
-                site_extra += b'\x00' * min(3, 4 - len(site_extra) % 4)
-            site_records += (
-                struct.pack('<HH', 0, 4 + len(site_data) + len(site_extra)) +
-                site[0] + site_data + site_extra
-            )
+            ole = OleSite()
+            ole.properties = site
+            site_records += ole.to_bytes()
+
         depth = self.depth
         pad_size = min(4 - len(depth) % 4, 3)
         padded_depth = depth + b't' * pad_size
@@ -153,6 +120,9 @@ class FormControl:
             output += item
         output += struct.pack('<II', len(self.sites), count_of_bytes)
         output += padded_depth + site_records
+        return output
+        
+        
         return output
 
     def generate_prop_mask(self: T) -> int:
