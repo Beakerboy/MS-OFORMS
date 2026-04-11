@@ -116,5 +116,5 @@ def test_to_bytes() -> None:
         (site3_mask, site3_data),
         (site4_mask, site4_data), (site5_mask, site5_data)
     ]
-    serial.depth = b'\x00\x85\x01'  # 5 consecutive ssites with type 1 depth 0
-    assert form.to_bytes() == expected
+    serializer.depth = b'\x00\x85\x01'  # 5 consecutive ssites with type 1 depth 0
+    assert serializer.to_bytes() == expected
